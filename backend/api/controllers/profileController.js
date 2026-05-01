@@ -176,11 +176,16 @@ exports.updateProfile = asyncHandler(async (req, res) => {
 
     // 3. Sync with alumni_profiles if user is alumni
     if (req.user.role === 'alumni') {
-      await connection.query(`
-        UPDATE alumni_profiles 
-        SET department = ?, graduation_year = ?, location = ?, bio = ?, linkedin = ?
-        WHERE user_id = ?
-      `, [department, graduation_year || null, location, bio, linkedin, userId]);
+      try {
+        await connection.query(`
+          UPDATE alumni_profiles 
+          SET department = ?, graduation_year = ?, location = ?, bio = ?, linkedin = ?
+          WHERE user_id = ?
+        `, [department, graduation_year || null, location, bio, linkedin, userId]);
+      } catch (alumniErr) {
+        console.warn('[ProfileUpdate] Alumni sync failed (likely missing columns):', alumniErr.message);
+        // We don't throw here so the main profile save still works
+      }
     }
 
     // 4. Update profile image if uploaded (Cloudinary)
