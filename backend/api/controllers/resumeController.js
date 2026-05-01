@@ -1,6 +1,7 @@
 const { pool } = require('../services_config/db');
 
 const { asyncHandler } = require('../middleware/errorHandler');
+const multer = require('multer');
 const { resumeStorage } = require('../services_config/cloudinary');
 
 exports.upload = multer({ 

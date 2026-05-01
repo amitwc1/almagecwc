@@ -2,6 +2,7 @@ const { pool } = require('../services_config/db');
 
 const { ApiError, asyncHandler } = require('../middleware/errorHandler');
 const { createNotification } = require('./notificationController');
+const multer = require('multer');
 const { messageStorage } = require('../services_config/cloudinary');
 
 // Multer Config using Cloudinary
