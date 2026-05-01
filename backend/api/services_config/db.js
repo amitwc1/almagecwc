@@ -8,11 +8,15 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME || 'gec_alumni',
   waitForConnections: true,
   connectionLimit: 10,
-  queueLimit: 0
+  queueLimit: 0,
+  connectTimeout: 10000, // 10 seconds timeout
+  enableKeepAlive: true,
+  keepAliveInitialDelay: 10000
 });
 
 const initializeDatabase = async () => {
   try {
+    console.log(`Connecting to DB: ${process.env.DB_HOST} with user: ${process.env.DB_USER}`);
     const db = await pool.getConnection();
     console.log('✅ Connected to MySQL database');
 
