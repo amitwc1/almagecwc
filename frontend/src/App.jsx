@@ -24,16 +24,51 @@ const PublicProfilePage = lazy(() => import('./pages/PublicProfilePage'));
 const ConnectionRequestsPage = lazy(() => import('./pages/ConnectionRequestsPage'));
 const NotificationsPage = lazy(() => import('./pages/NotificationsPage'));
 
+import Loader from './components/Loader';
 
-// Loading fallback
-const PageLoader = () => (
-  <div className="min-h-screen flex items-center justify-center bg-background-light dark:bg-background-dark">
-    <div className="flex flex-col items-center gap-4">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-      <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Loading...</p>
-    </div>
-  </div>
-);
+const MainContent = () => {
+  const { loading } = useAuth();
+
+  if (loading) return <Loader />;
+
+  return (
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/directory" element={<AlumniDirectoryPage />} />
+        <Route path="/profile/:id" element={<PublicProfilePage />} />
+        <Route path="/jobs" element={<JobsPage />} />
+        <Route path="/events" element={<EventsPage />} />
+        <Route path="/mentorship" element={
+          <ProtectedRoute><MentorshipPage /></ProtectedRoute>
+        } />
+        <Route path="/dashboard" element={
+          <ProtectedRoute roles={['alumni', 'student']}><DashboardPage /></ProtectedRoute>
+        } />
+        <Route path="/admin" element={
+          <ProtectedRoute roles={['admin']}><AdminDashboardPage /></ProtectedRoute>
+        } />
+        <Route path="/messages/:userId?" element={
+          <ProtectedRoute><MessagesPage /></ProtectedRoute>
+        } />
+        <Route path="/profile" element={
+          <ProtectedRoute><ProfilePage /></ProtectedRoute>
+        } />
+        <Route path="/profile/edit" element={
+          <ProtectedRoute><EditProfilePage /></ProtectedRoute>
+        } />
+        <Route path="/connections/requests" element={
+          <ProtectedRoute><ConnectionRequestsPage /></ProtectedRoute>
+        } />
+        <Route path="/notifications" element={
+          <ProtectedRoute><NotificationsPage /></ProtectedRoute>
+        } />
+      </Routes>
+    </Suspense>
+  );
+};
 
 function App() {
   return (
@@ -50,41 +85,7 @@ function App() {
                 error: { iconTheme: { primary: '#ef4444', secondary: '#fff' } }
               }}
             />
-            <Suspense fallback={<PageLoader />}>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/register" element={<RegisterPage />} />
-                <Route path="/directory" element={<AlumniDirectoryPage />} />
-                <Route path="/profile/:id" element={<PublicProfilePage />} />
-                <Route path="/jobs" element={<JobsPage />} />
-                <Route path="/events" element={<EventsPage />} />
-                <Route path="/mentorship" element={
-                  <ProtectedRoute><MentorshipPage /></ProtectedRoute>
-                } />
-                <Route path="/dashboard" element={
-                  <ProtectedRoute roles={['alumni', 'student']}><DashboardPage /></ProtectedRoute>
-                } />
-                <Route path="/admin" element={
-                  <ProtectedRoute roles={['admin']}><AdminDashboardPage /></ProtectedRoute>
-                } />
-                <Route path="/messages/:userId?" element={
-                  <ProtectedRoute><MessagesPage /></ProtectedRoute>
-                } />
-                <Route path="/profile" element={
-                  <ProtectedRoute><ProfilePage /></ProtectedRoute>
-                } />
-                <Route path="/profile/edit" element={
-                  <ProtectedRoute><EditProfilePage /></ProtectedRoute>
-                } />
-                <Route path="/connections/requests" element={
-                  <ProtectedRoute><ConnectionRequestsPage /></ProtectedRoute>
-                } />
-                <Route path="/notifications" element={
-                  <ProtectedRoute><NotificationsPage /></ProtectedRoute>
-                } />
-              </Routes>
-            </Suspense>
+            <MainContent />
           </BrowserRouter>
         </SocketProvider>
       </AuthProvider>
