@@ -25,7 +25,7 @@ const API = axios.create({
 export const extractErrorMessage = (err) => {
   // Network error — server not reachable
   if (err.code === 'ERR_NETWORK' || !err.response) {
-    return 'Server not reachable. Please check if the backend is running.';
+    return `Server not reachable at: ${API_URL}. Please check if the backend is running.`;
   }
 
   // Timeout
