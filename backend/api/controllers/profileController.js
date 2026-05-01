@@ -133,13 +133,16 @@ exports.updateProfile = asyncHandler(async (req, res) => {
     department: Joi.string().allow('', null).max(255),
     graduation_year: Joi.number().integer().min(1900).max(new Date().getFullYear() + 10).allow('', null),
     roll_number: Joi.string().allow('', null).max(50),
-    linkedin: Joi.string().uri().allow('', null),
-    github: Joi.string().uri().allow('', null),
-    portfolio: Joi.string().uri().allow('', null)
+    linkedin: Joi.string().allow('', null).max(255),
+    github: Joi.string().allow('', null).max(255),
+    portfolio: Joi.string().allow('', null).max(255)
   });
 
   const { error } = schema.validate(req.body);
-  if (error) throw new ApiError(400, error.details[0].message);
+  if (error) {
+    console.error('[ProfileUpdate] Validation Error:', error.details[0].message);
+    throw new ApiError(400, error.details[0].message);
+  }
 
   const connection = await pool.getConnection();
   await connection.beginTransaction();
@@ -195,6 +198,8 @@ exports.updateProfile = asyncHandler(async (req, res) => {
     res.json({ success: true, message: 'Profile updated successfully' });
   } catch (err) {
     await connection.rollback();
+    console.error('[ProfileUpdate] Database Error:', err.message);
+    console.error('[ProfileUpdate] Full Error:', err);
     throw err;
   } finally {
     connection.release();
