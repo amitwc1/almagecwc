@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useRef } from 'react';
 import authService, { extractErrorMessage } from '../services/authService';
 
 const AuthContext = createContext(null);
@@ -9,15 +9,16 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [loading, setLoading] = useState(true);
-
-  const [isInitialized, setIsInitialized] = useState(false);
+  const sessionChecked = useRef(false);
 
   // Load user on mount or when token changes
   useEffect(() => {
     const loadUser = async () => {
+      if (sessionChecked.current) return;
+      sessionChecked.current = true;
+
       if (!token) {
         setLoading(false);
-        setIsInitialized(true);
         return;
       }
 
@@ -33,20 +34,17 @@ export const AuthProvider = ({ children }) => {
           unreadNotifications: userData.unreadNotifications || 0,
         });
       } catch (err) {
-        console.warn('[AuthContext] Failed to load user, clearing token');
+        console.warn('[AuthContext] Session expired or invalid');
         localStorage.removeItem('token');
         setToken(null);
         setUser(null);
       } finally {
         setLoading(false);
-        setIsInitialized(true);
       }
     };
 
-    if (!isInitialized || token) {
-      loadUser();
-    }
-  }, [token, isInitialized]);
+    loadUser();
+  }, [token]);
 
   /**
    * Login — calls backend, stores token, sets user state.
