@@ -197,11 +197,22 @@ exports.updateProfile = asyncHandler(async (req, res) => {
     // 4. Update profile image if uploaded (Cloudinary)
     if (req.file) {
       const imageUrl = req.file.path;
-      await connection.query('UPDATE profiles SET profile_image = ? WHERE user_id = ?', [imageUrl, userId]);
-      await connection.query('UPDATE users SET avatar_url = ? WHERE id = ?', [imageUrl, userId]);
       
+      // Update Profiles
+      try {
+        await connection.query('UPDATE profiles SET profile_image = ? WHERE user_id = ?', [imageUrl, userId]);
+      } catch (e) { console.warn('[ProfileUpdate] profiles photo sync failed:', e.message); }
+
+      // Update Users
+      try {
+        await connection.query('UPDATE users SET avatar_url = ? WHERE id = ?', [imageUrl, userId]);
+      } catch (e) { console.warn('[ProfileUpdate] users photo sync failed:', e.message); }
+      
+      // Update Alumni Profiles
       if (req.user.role === 'alumni') {
-        await connection.query('UPDATE alumni_profiles SET profile_image = ? WHERE user_id = ?', [imageUrl, userId]);
+        try {
+          await connection.query('UPDATE alumni_profiles SET profile_image = ? WHERE user_id = ?', [imageUrl, userId]);
+        } catch (e) { console.warn('[ProfileUpdate] alumni_profiles photo sync failed:', e.message); }
       }
     }
 
