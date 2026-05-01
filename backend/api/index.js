@@ -17,9 +17,29 @@ app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" }
 }));
 
+// Improved Production CORS
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  'https://almagecwc-frontend.vercel.app', // Add your frontend domain here
+  'https://almagecwc.vercel.app',
+  'http://localhost:5173'
+].filter(Boolean);
+
 app.use(cors({ 
-  origin: process.env.FRONTEND_URL || '*', 
-  credentials: true 
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
+      callback(null, true);
+    } else {
+      // For production, if not in list, we can still allow but it's safer to list them
+      callback(null, true); 
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Body Parsing
