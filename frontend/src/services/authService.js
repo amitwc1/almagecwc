@@ -70,6 +70,9 @@ const authService = {
    */
   register: async (name, email, password, role) => {
     console.log('[AuthService] Register request:', { name, email, role });
+    // Debug: Remove this once fixed
+    console.log("Attempting request to:", `${API_URL}/register`);
+    
     const res = await API.post('/register', { name, email, password, role });
     console.log('[AuthService] Register response:', res.data);
     return res.data;
