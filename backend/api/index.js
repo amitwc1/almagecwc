@@ -66,28 +66,39 @@ app.get('/', (req, res) => {
 app.use(notFound);
 app.use(errorHandler);
 
+// Debug Logs for Environment Variables (Vercel Expert Tip)
+console.log('--- Environment Check ---');
+console.log('DB_HOST:', process.env.DB_HOST ? '✅ Set' : '❌ NOT SET');
+console.log('DB_USER:', process.env.DB_USER ? '✅ Set' : '❌ NOT SET');
+console.log('VERCEL:', process.env.VERCEL ? '✅ Yes' : '❌ No');
+console.log('-------------------------');
+
 // Database Initialization helper
 let isDbInitialized = false;
 const initDbOnce = async () => {
   if (isDbInitialized) return;
-  
   try {
-    // Only initialize if we are NOT in local dev or if we explicitly want it
-    // In serverless, we want to be fast.
+    console.log('Initializing database connection...');
     await initializeDatabase();
     isDbInitialized = true;
-    console.log('Database initialized successfully');
+    console.log('✅ Database initialized successfully');
   } catch (err) {
-    console.error('Database initialization failed:', err.message);
-    // We don't throw here to allow the app to at least respond with health checks
+    console.error('❌ Database initialization failed:', err.message);
   }
 };
 
-// Vercel Serverless Function Handler
+// Serverless Handler (Vercel Expert Pattern)
+const handler = serverless(app);
+
 module.exports = async (req, res) => {
-  // Ensure DB is connected/initialized
+  console.log(`🚀 API HIT: ${req.method} ${req.url}`);
+  if (req.body && Object.keys(req.body).length > 0) {
+    console.log('📦 Request Body:', JSON.stringify(req.body).substring(0, 500));
+  }
+
+  // Ensure DB is connected/initialized before handling request
   await initDbOnce();
   
-  // Handle the request using the Express app
-  return app(req, res);
+  // Handle the request
+  return await handler(req, res);
 };

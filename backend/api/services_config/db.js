@@ -16,7 +16,11 @@ const pool = mysql.createPool({
 
 const initializeDatabase = async () => {
   try {
-    console.log(`Connecting to DB: ${process.env.DB_HOST} with user: ${process.env.DB_USER}`);
+    console.log('--- DB Connection Attempt ---');
+    console.log('Host:', process.env.DB_HOST);
+    console.log('User:', process.env.DB_USER);
+    console.log('DB Name:', process.env.DB_NAME);
+    
     const db = await pool.getConnection();
     console.log('✅ Connected to MySQL database');
 
