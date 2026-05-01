@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#003366",
+                "background-light": "#f5f7f8",
+                "background-dark": "#0f1923",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<title>Alumni Connect Dashboard</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col fixed h-full overflow-y-auto">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="h-10 w-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">school</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-primary">AlumniCore</span>
+</div>
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 px-3 py-4 rounded-xl bg-primary/10 border border-primary/20">
+<div class="size-12 rounded-full bg-cover bg-center border-2 border-primary" data-alt="Professional headshot of a male alumni" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBM8ztTTCnhGnC6lKX2BLu-tqQBOUkxS1DBn0sR03-9vcY2Sf24kI-yHZTITP5TnxIhddRbTji_rJqroEj83T-OKHs39Y8l8ZLmwpJJPV91-rBbvgx6KcX0pAFBXtHAZg9Sm-HDt75mKq9OoBX_ypXv3AvwwKpEkFxgWSftfO_rycwcZ46s4YFidWsacw2bVSEEKBeFuAGCX9XB3bY-v9zQjQ_7RI6yvp4AhyS-ws66CXpwpVxGPFSpV8TYZvimfUZ1eopYCb8fPrE")'></div>
+<div class="flex flex-col overflow-hidden">
+<h2 class="text-sm font-bold truncate">Alex Sterling</h2>
+<p class="text-xs text-slate-500 dark:text-slate-400">Class of 2018</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<p class="px-3 text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">Main Menu</p>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary text-white font-medium" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">person</span>
+<span class="text-sm font-medium">Profile</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+<span class="text-sm font-medium">Directory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">work</span>
+<span class="text-sm font-medium">Jobs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">handshake</span>
+<span class="text-sm font-medium">Mentorship</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">calendar_today</span>
+<span class="text-sm font-medium">Events</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">chat</span>
+<span class="text-sm font-medium">Messages</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">favorite</span>
+<span class="text-sm font-medium">Donations</span>
+</a>
+</nav>
+</div>
+</div>
+<div class="mt-auto p-6 border-t border-slate-200 dark:border-slate-800">
+<button class="w-full flex items-center justify-center gap-2 py-3 bg-primary text-white rounded-lg font-bold text-sm shadow-lg shadow-primary/20 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">logout</span>
+                    Sign Out
+                </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 ml-72 p-8">
+<header class="flex justify-between items-center mb-10">
+<div>
+<h1 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Alumni Dashboard</h1>
+<p class="text-slate-500 dark:text-slate-400">Welcome back, Alex. Here's what's happening in your network.</p>
+</div>
+<div class="flex gap-4">
+<button class="relative p-2 rounded-full border border-slate-200 dark:border-slate-800 hover:bg-white dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-background-light dark:border-background-dark"></span>
+</button>
+<button class="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">settings</span>
+                        Settings
+                    </button>
+</div>
+</header>
+<!-- Metrics -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col gap-1">
+<div class="flex justify-between items-start mb-2">
+<span class="p-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 rounded-lg material-symbols-outlined">payments</span>
+<span class="text-xs font-bold text-emerald-500 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-full">+5.2%</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Total Donations</p>
+<p class="text-3xl font-black text-slate-900 dark:text-white">$1,250.00</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col gap-1">
+<div class="flex justify-between items-start mb-2">
+<span class="p-2 bg-purple-100 dark:bg-purple-900/30 text-purple-600 rounded-lg material-symbols-outlined">diversity_3</span>
+<span class="text-xs font-bold text-emerald-500 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-full">+12%</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Mentorship Hours</p>
+<p class="text-3xl font-black text-slate-900 dark:text-white">24.5</p>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col gap-1">
+<div class="flex justify-between items-start mb-2">
+<span class="p-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 rounded-lg material-symbols-outlined">share_reviews</span>
+<span class="text-xs font-bold text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-full">Static</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Referrals Made</p>
+<p class="text-3xl font-black text-slate-900 dark:text-white">08</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- Data Visualization placeholder -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-lg font-bold">Network Engagement</h3>
+<select class="bg-slate-50 dark:bg-slate-800 border-none rounded-lg text-xs font-bold p-2 focus:ring-primary">
+<option>Last 6 Months</option>
+<option>Last Year</option>
+</select>
+</div>
+<div class="h-64 w-full relative flex items-end justify-between gap-2 pt-4">
+<!-- CSS-based Bar Chart Representation -->
+<div class="group relative flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-lg h-[40%] group-hover:bg-primary/40 transition-all"></div>
+<span class="text-[10px] font-bold text-slate-400">JAN</span>
+</div>
+<div class="group relative flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-lg h-[60%] group-hover:bg-primary/40 transition-all"></div>
+<span class="text-[10px] font-bold text-slate-400">FEB</span>
+</div>
+<div class="group relative flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-lg h-[45%] group-hover:bg-primary/40 transition-all"></div>
+<span class="text-[10px] font-bold text-slate-400">MAR</span>
+</div>
+<div class="group relative flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-primary/60 dark:bg-primary/40 rounded-t-lg h-[85%] group-hover:bg-primary transition-all"></div>
+<span class="text-[10px] font-bold text-slate-900 dark:text-white">APR</span>
+</div>
+<div class="group relative flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-lg h-[55%] group-hover:bg-primary/40 transition-all"></div>
+<span class="text-[10px] font-bold text-slate-400">MAY</span>
+</div>
+<div class="group relative flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-lg h-[70%] group-hover:bg-primary/40 transition-all"></div>
+<span class="text-[10px] font-bold text-slate-400">JUN</span>
+</div>
+</div>
+</div>
+<!-- Recent Jobs -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-lg font-bold">Recommended for You</h3>
+<a class="text-sm font-bold text-primary hover:underline" href="#">View All</a>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4 p-4 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-primary/30 transition-colors">
+<div class="size-12 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 font-bold">G</div>
+<div class="flex-1">
+<h4 class="font-bold text-sm">Senior Product Designer</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400">Google • Mountain View, CA</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-slate-900 dark:text-white">$140k - $180k</p>
+<p class="text-[10px] font-bold text-slate-400 uppercase">2 days ago</p>
+</div>
+<button class="p-2 text-slate-400 hover:text-primary material-symbols-outlined">bookmark</button>
+</div>
+<div class="flex items-center gap-4 p-4 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-primary/30 transition-colors">
+<div class="size-12 rounded-lg bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center text-emerald-600 font-bold">S</div>
+<div class="flex-1">
+<h4 class="font-bold text-sm">Lead Software Engineer</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400">Spotify • Remote</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-slate-900 dark:text-white">$160k - $210k</p>
+<p class="text-[10px] font-bold text-slate-400 uppercase">5 days ago</p>
+</div>
+<button class="p-2 text-slate-400 hover:text-primary material-symbols-outlined">bookmark</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column -->
+<div class="lg:col-span-4 flex flex-col gap-8">
+<!-- Upcoming Events -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+<h3 class="text-lg font-bold mb-6">Upcoming Events</h3>
+<div class="flex flex-col gap-6">
+<div class="flex gap-4 group cursor-pointer">
+<div class="flex flex-col items-center justify-center size-14 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shrink-0 group-hover:border-primary transition-colors">
+<span class="text-xs font-bold text-primary uppercase">Oct</span>
+<span class="text-xl font-black">15</span>
+</div>
+<div class="flex flex-col justify-center overflow-hidden">
+<h4 class="font-bold text-sm truncate">Annual Alumni Gala 2024</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                                        Grand Ballroom, NYC
+                                    </p>
+</div>
+</div>
+<div class="flex gap-4 group cursor-pointer">
+<div class="flex flex-col items-center justify-center size-14 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shrink-0 group-hover:border-primary transition-colors">
+<span class="text-xs font-bold text-primary uppercase">Oct</span>
+<span class="text-xl font-black">22</span>
+</div>
+<div class="flex flex-col justify-center overflow-hidden">
+<h4 class="font-bold text-sm truncate">Tech Networking Mixer</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">videocam</span>
+                                        Virtual Event
+                                    </p>
+</div>
+</div>
+<div class="flex gap-4 group cursor-pointer">
+<div class="flex flex-col items-center justify-center size-14 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shrink-0 group-hover:border-primary transition-colors">
+<span class="text-xs font-bold text-primary uppercase">Nov</span>
+<span class="text-xl font-black">04</span>
+</div>
+<div class="flex flex-col justify-center overflow-hidden">
+<h4 class="font-bold text-sm truncate">Startup Pitch Night</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                                        Campus Innovation Hub
+                                    </p>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-2.5 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white rounded-lg text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+                            Discover More Events
+                        </button>
+</div>
+<!-- Mentorship Requests -->
+<div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-lg font-bold">Mentorship <span class="inline-flex items-center justify-center size-5 bg-primary text-white text-[10px] rounded-full ml-1">2</span></h3>
+</div>
+<div class="flex flex-col gap-5">
+<div class="flex items-start gap-3">
+<div class="size-10 rounded-full bg-cover bg-center shrink-0" data-alt="Portrait of a young female student" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAqJqw38EmS_RUmwRwW7HqUoeE-Z5UV5DDFvUMIXf3fuzLnXErubrNdccb8njsRp_JgPae7i0iYhJuBATetvrwQukOXeukWJgWBazuWkMY37-Xw3XtiD-Wks96EFPaTUWkKmjYoiI9Ue0iKNaGob5JNaCeJwTYhJl8o-SA_h6JGeNthxdX8F6v5Eij_KiD2UNnL-BI2Ky3ts1oq977yORrXXKfHDkB8Ul59QB1dJynbtgcTBC_aFDgXimvtzyLnRvd6oBpMGOviMXo")'></div>
+<div class="flex flex-col overflow-hidden">
+<h4 class="text-sm font-bold">Sarah Chen</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-2">Junior, Computer Science</p>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-md hover:bg-primary/90">Accept</button>
+<button class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-bold rounded-md">Decline</button>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="size-10 rounded-full bg-cover bg-center shrink-0" data-alt="Portrait of a male student wearing glasses" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBZ0xNMxWDMcPYkMSDouwRBed5wSqfUbRPvHran6eN3rRsVENrWM69VfpqmBNquG8WN77mLEXIzBtelW7SZElYzJvfU2iH_Xmf-0ZqCILX_jYFNdtH7gzY07skZo4Ks95b72N8eQzFkVBItbMmj6X73oQr7mya3woIu2zFel_5tpVTVWkTjpm4RQ0W3BDdTMFSnVEGBBmjz-2DYMEvw-WouszjkzLAYWkNzi-lOkVhchZ7tR_DiQmpvoVQuUNUmrM1aTJdYiMN0cTM")'></div>
+<div class="flex flex-col overflow-hidden">
+<h4 class="text-sm font-bold">Marcus Miller</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-2">Senior, Marketing</p>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-md hover:bg-primary/90">Accept</button>
+<button class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-bold rounded-md">Decline</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

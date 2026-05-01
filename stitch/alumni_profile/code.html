@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Alumni Profile - Alex Rivera</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 bg-white dark:bg-background-dark px-6 md:px-20 lg:px-40 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-primary dark:text-slate-100">
+<span class="material-symbols-outlined text-3xl">school</span>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Alumni Network</h2>
+</div>
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Directory</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Jobs</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Events</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-6">
+<label class="hidden sm:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-primary/60 flex border-none bg-primary/5 items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 rounded-lg text-slate-900 focus:outline-0 focus:ring-0 border-none bg-primary/5 focus:border-none h-full placeholder:text-primary/40 px-4 rounded-l-none border-l-0 pl-2 text-base font-normal" placeholder="Search alumni..." value=""/>
+</div>
+</label>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-primary/10" data-alt="User profile thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAmJuQ0QjImmncEJ9-CDAG2Znippn_g4RzhEb8TJiSQqTeAXEnI-d6SaRyWvmxjOFreXygzBo4a0JP82jpeuudqKbgFXmCxLAJq4LNXH01e7JAZuXAHFJOJMOnabwG-N_5PMUOaahswc8InjMIPwLncpCcMV2carbatPt-0aj3Hn2ilDJ-_UhVC4bT2m9DsB4NdlDOVK6LfoLZEvtklVuWkwbHIVXqyaY1pF_Np1y2itKzWr_A8WBqNBx1F1A8Peh96yAM3bURjnQs");'></div>
+</div>
+</header>
+<main class="flex flex-1 justify-center py-8">
+<div class="layout-content-container flex flex-col max-w-[1024px] flex-1 px-4 md:px-10">
+<!-- Profile Header -->
+<div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-primary/5 overflow-hidden">
+<div class="h-32 w-full bg-gradient-to-r from-primary to-blue-900" data-alt="Abstract blue professional gradient background"></div>
+<div class="px-6 pb-6 -mt-12 flex flex-col md:flex-row md:justify-between md:items-end gap-4">
+<div class="flex flex-col md:flex-row items-start md:items-end gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-2xl size-32 border-4 border-white dark:border-slate-800 shadow-md" data-alt="Professional headshot of a male alumnus" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCbR4sIcaSbJKfO2epqWkLjxzL7I1c-QVz64TWZL5KOdIzEcVuAvO5eD3gN-hIESK1N4tCspui_RA_kEVG7o90CnCCsLOiRrS_BSCbLWydDslhd9dUDBJzOXZkcROdKgfdndykoUAglty2fyO-2RQxL0bYSmP5g_TpD-sbvc-BjPDoTFyVpw2gVZ9aiTTyg6-I3gL8Pb8LW5SIIu5EnTxzg_hC_PYYVd7VFfF_P9czMdykFOqFQbKR4Z0U-_T3I4B8FF8DY5CHWHeM");'></div>
+<div class="flex flex-col mb-2">
+<h1 class="text-2xl font-bold leading-tight tracking-tight">Alex Rivera</h1>
+<p class="text-primary font-semibold">Class of 2015 • Senior Product Designer at TechCorp</p>
+<div class="flex items-center gap-1 text-slate-500 text-sm mt-1">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<p>San Francisco, CA</p>
+</div>
+</div>
+</div>
+<div class="flex gap-3 mb-2">
+<button class="flex items-center gap-2 min-w-[100px] cursor-pointer justify-center rounded-lg h-10 px-4 bg-primary/10 text-primary text-sm font-bold hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-lg">mail</span>
+<span>Message</span>
+</button>
+<button class="flex items-center gap-2 min-w-[100px] cursor-pointer justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-lg">person_add</span>
+<span>Connect</span>
+</button>
+</div>
+</div>
+<!-- Tab Navigation -->
+<div class="border-t border-primary/5 px-6 overflow-x-auto">
+<div class="flex gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-primary text-primary pb-3 pt-4" href="#">
+<span class="text-sm font-bold">About</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-slate-500 hover:text-primary pb-3 pt-4" href="#">
+<span class="text-sm font-bold">Experience</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-slate-500 hover:text-primary pb-3 pt-4" href="#">
+<span class="text-sm font-bold">Posts</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-slate-500 hover:text-primary pb-3 pt-4" href="#">
+<span class="text-sm font-bold">Connections</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Main Grid Content -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+<!-- Left Column: Bio & Skills -->
+<div class="lg:col-span-2 flex flex-col gap-6">
+<!-- Bio Section -->
+<section class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-primary/5">
+<h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">person</span>
+                                    Professional Bio
+                                </h3>
+<p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                    Passionate product designer with over 8 years of experience in building scalable design systems and user-centric interfaces. Proud Alumnus of State University, dedicated to mentoring the next generation of designers and contributing to the open-source community. Currently leading the UI/UX efforts for the enterprise cloud division at TechCorp.
+                                </p>
+</section>
+<!-- Career Timeline -->
+<section class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-primary/5">
+<h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">work</span>
+                                    Career Timeline
+                                </h3>
+<div class="space-y-8 relative before:content-[''] before:absolute before:left-[17px] before:top-2 before:bottom-2 before:w-[2px] before:bg-primary/10">
+<div class="relative pl-12">
+<div class="absolute left-0 top-1 size-9 rounded-full bg-primary flex items-center justify-center text-white z-10 border-4 border-white dark:border-slate-800">
+<span class="material-symbols-outlined text-sm">apartment</span>
+</div>
+<div>
+<h4 class="font-bold">Senior Product Designer</h4>
+<p class="text-sm text-primary font-medium">TechCorp • 2020 - Present</p>
+<p class="text-slate-600 dark:text-slate-300 mt-2 text-sm leading-relaxed">Leading design for SaaS platforms, increasing user retention by 25%. Managing a team of 4 designers.</p>
+</div>
+</div>
+<div class="relative pl-12">
+<div class="absolute left-0 top-1 size-9 rounded-full bg-primary/20 flex items-center justify-center text-primary z-10 border-4 border-white dark:border-slate-800">
+<span class="material-symbols-outlined text-sm">corporate_fare</span>
+</div>
+<div>
+<h4 class="font-bold">UX Designer</h4>
+<p class="text-sm text-primary font-medium">Creative Waves • 2017 - 2020</p>
+<p class="text-slate-600 dark:text-slate-300 mt-2 text-sm leading-relaxed">Developed mobile-first interfaces for e-commerce clients. Streamlined the checkout process for high-traffic sites.</p>
+</div>
+</div>
+<div class="relative pl-12">
+<div class="absolute left-0 top-1 size-9 rounded-full bg-primary/20 flex items-center justify-center text-primary z-10 border-4 border-white dark:border-slate-800">
+<span class="material-symbols-outlined text-sm">history_edu</span>
+</div>
+<div>
+<h4 class="font-bold">Junior Web Designer</h4>
+<p class="text-sm text-primary font-medium">StartUp Inc • 2015 - 2017</p>
+<p class="text-slate-600 dark:text-slate-300 mt-2 text-sm leading-relaxed">Assisted in brand development and responsive web design for local businesses.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Posts -->
+<section class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-primary/5">
+<h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">article</span>
+                                    Recent Posts
+                                </h3>
+<div class="flex flex-col gap-4">
+<div class="p-4 rounded-lg border border-primary/5 hover:bg-primary/5 transition-colors cursor-pointer group">
+<p class="text-xs text-slate-400 mb-1">Posted 2 days ago</p>
+<h4 class="font-bold group-hover:text-primary transition-colors">The Future of Design Systems in AI-driven Workflows</h4>
+<p class="text-sm text-slate-500 mt-1 line-clamp-2">Exploring how generative AI is shifting the way we think about component libraries and consistency...</p>
+</div>
+<div class="p-4 rounded-lg border border-primary/5 hover:bg-primary/5 transition-colors cursor-pointer group">
+<p class="text-xs text-slate-400 mb-1">Posted 1 week ago</p>
+<h4 class="font-bold group-hover:text-primary transition-colors">Why Alumni Networking Matters More Than Your Portfolio</h4>
+<p class="text-sm text-slate-500 mt-1 line-clamp-2">My journey from college graduate to TechCorp was built on the foundation of the state university network...</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Skills & Connections -->
+<div class="flex flex-col gap-6">
+<!-- Skills -->
+<section class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-primary/5">
+<h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">star</span>
+                                    Expertise
+                                </h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full">Product Design</span>
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full">UI/UX</span>
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full">Design Systems</span>
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full">Figma</span>
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full">Prototyping</span>
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full">Frontend Development</span>
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full">Strategy</span>
+</div>
+</section>
+<!-- Connections -->
+<section class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-primary/5">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">group</span>
+                                        Connections
+                                    </h3>
+<a class="text-primary text-xs font-bold hover:underline" href="#">View All</a>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center border border-primary/10" data-alt="Profile picture of Sarah Johnson" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDc3Iy-2JtAYPEixcNZFgIEY7UExD7mUbXBDJXKqzukAy_mEQ9dzxYtYh3gQ6hyQaX0kngdQfiCMltzjzu0GGMvBBpe5cpielvwDBxlviE1jTIHWYA1eGGIHaMJ3ZNnVzZq-3vM9N_mY6JurwkKjgYYyZ__VingayP8_m2DPdvz5YCcpRRMJm-f2YLTqj91eLjIrdP1QsmKOm6Or5k3IL6dpKKkPsmXzco963oHH2e25lmJleqyvmCf_qplqXsR3F_Dop3hVi-prO8");'></div>
+<div class="flex flex-col">
+<p class="text-sm font-bold">Sarah Johnson</p>
+<p class="text-xs text-slate-500 leading-none">Software Engineer at Google</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center border border-primary/10" data-alt="Profile picture of Michael Chen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBNbzSX0u2kbTVab-s9X5MorLf2w3nEwrWIeFPwwlxAORHI-9i--y-3BR--WbCzXqVGUBECRA2uS7j2YxmebyWQlHCCQXF6Y-XYedO4RBCmtqWtInctHox23Pz0XBXjvziglVijU61TJgzJPhNkE4y64rneMR9M_Hi1XQ2NJF773sf6vh5R8DjRPMNroeruc2HWTbrF7GTxRP5SgTVW4KpVrXyru5kOkaq7n4t97AslZkYMVhCooA0zLliO7R1dg9qdsrvH53jIALo");'></div>
+<div class="flex flex-col">
+<p class="text-sm font-bold">Michael Chen</p>
+<p class="text-xs text-slate-500 leading-none">Marketing Lead at Stripe</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center border border-primary/10" data-alt="Profile picture of Jessica Wu" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCru6dOkzrVscrCvIT7AFB8uaAmCxmIxoSJSoQryjoA5gJVJkbLbXgJQi5UfZXJMHwstCzQ1zTPU43n6GxQTLfPOu5ihNHuPsMF-Qdo9YK_o-tNWfoXj4diBFJeAFb7oyKAE5k7agQNMD4w5oVp2Ts8bH31iCXXgN0ZZGD1Y4eE8lU0o0cTnT2of1HD1OpC2ARnH8_RNKl1FrLUyEANoIttLm7XK-lr8ApNxAJin_UdlWhEzpQe4-CknhdOvhvasz45qd2DvNGXxEA");'></div>
+<div class="flex flex-col">
+<p class="text-sm font-bold">Jessica Wu</p>
+<p class="text-xs text-slate-500 leading-none">Product Manager at Meta</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center border border-primary/10" data-alt="Profile picture of David Miller" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuANOwGJiTKiKR6axg8NlwGjRVlY2uq_8fYgFDzlqtQqHViC-9Q6LBaH9HHNDipLqPihcKs6RzBJjSL1ahBQrqYA0T87QinKi9ZGfki0buzKOEhN2nXYFIGolexKkUoojGaFDGnRJso3onKlL8lda3eUMar3sup5sT9TRegPyZg1D1GuQYuW-674tYyuOVZeYSa_W-DzRVP-KkF7-BAKXg3GwTi0wnqJHLSeTtkCBUuxBhpXq8LzpRJl7Vg8YmVl3Z1f2rXJGahveGs");'></div>
+<div class="flex flex-col">
+<p class="text-sm font-bold">David Miller</p>
+<p class="text-xs text-slate-500 leading-none">Founder at HealthFlow</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Sidebar -->
+<section class="bg-primary text-white rounded-xl p-6 shadow-sm">
+<h3 class="text-lg font-bold mb-2">Looking for mentors?</h3>
+<p class="text-sm text-blue-100 mb-4 leading-relaxed">Alex is currently open to mentoring juniors from State University. Feel free to reach out.</p>
+<button class="w-full py-2 bg-white text-primary rounded-lg text-sm font-bold hover:bg-slate-50 transition-colors">
+                                    Request Mentorship
+                                </button>
+</section>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-background-dark border-t border-primary/5 py-10 mt-12">
+<div class="max-w-[1024px] mx-auto px-6 text-center">
+<div class="flex items-center justify-center gap-2 text-primary dark:text-slate-100 mb-4">
+<span class="material-symbols-outlined text-2xl">school</span>
+<h2 class="text-md font-bold leading-tight">Alumni Network</h2>
+</div>
+<p class="text-sm text-slate-500">Connecting graduates across the world. Building a stronger community together.</p>
+<div class="flex justify-center gap-6 mt-6">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">language</span></a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+</div>
+<p class="text-xs text-slate-400 mt-8">© 2024 Alumni Network Portal. All rights reserved.</p>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

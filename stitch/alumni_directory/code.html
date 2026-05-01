@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Alumni Directory | College Network</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 bg-white dark:bg-slate-900 px-6 md:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 bg-primary text-white rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined">school</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">AlumniHub</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium" href="#">Directory</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium" href="#">Events</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium" href="#">Mentorship</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium" href="#">Jobs</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<label class="hidden sm:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800">
+<div class="text-slate-400 flex items-center justify-center pl-3">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:ring-0 text-sm font-normal placeholder:text-slate-400" placeholder="Search alumni..." value=""/>
+</div>
+</label>
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 border-2 border-primary/20" data-alt="User profile avatar of a smiling man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC6ZGS3djVZvJViR_pE74kMlDMStaMtQaLMxopVjXgG7rTyVfr33kxZTKoIv_Kt3UP0Ji_su5HQeKyFu7oNde91rCigpcYM1i4Sb7DppZYXETV4IAazjDCLHhxYZzR-hbbOyPH2Nj1P1mPlmU1ncVKWKbWRgbxWl2vWB0GTcODHi0taE5gKwuxL3P-sJboHWl4EkU8TGzLBxEdi56zIFNh5UxpdMv5omPe3xhmJhH_gr7V39AacAf8fBJ_5xR8KIRJx1lfd7NF6Ctk");'></div>
+</div>
+</header>
+<main class="flex flex-1 flex-col md:flex-row max-w-[1440px] mx-auto w-full px-4 md:px-10 py-8 gap-8">
+<aside class="w-full md:w-64 shrink-0 flex flex-col gap-6">
+<div class="flex flex-col gap-1">
+<h1 class="text-slate-900 dark:text-white text-xl font-bold">Filters</h1>
+<p class="text-slate-500 text-sm">Narrow down your network search</p>
+</div>
+<div class="flex flex-col gap-5">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">account_balance</span>
+                                Department
+                            </label>
+<select class="form-select rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:border-primary focus:ring-primary/20">
+<option>All Departments</option>
+<option>Computer Science</option>
+<option>Business Administration</option>
+<option>Mechanical Engineering</option>
+<option>Architecture</option>
+<option>Economics</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">calendar_today</span>
+                                Graduation Year
+                            </label>
+<div class="grid grid-cols-2 gap-2">
+<input class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:ring-primary/20" placeholder="From" type="number"/>
+<input class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:ring-primary/20" placeholder="To" type="number"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">business_center</span>
+                                Company
+                            </label>
+<input class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:ring-primary/20" placeholder="e.g. Google" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+                                Location
+                            </label>
+<input class="form-input rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm focus:ring-primary/20" placeholder="e.g. San Francisco" type="text"/>
+</div>
+<button class="mt-2 w-full bg-primary/10 hover:bg-primary/20 text-primary font-semibold py-2 rounded-lg transition-all text-sm">
+                            Clear All Filters
+                        </button>
+</div>
+</aside>
+<section class="flex-1 flex flex-col gap-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Alumni Directory</h2>
+<p class="text-slate-500 mt-1">Discover and connect with 12,403 graduates worldwide.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-sm text-slate-500">Sort by:</span>
+<button class="flex items-center gap-1 text-sm font-semibold text-slate-900 dark:text-white bg-white dark:bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700">
+                                Recent Graduates
+                                <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col">
+<div class="h-24 bg-gradient-to-r from-primary to-primary/60 relative">
+<div class="absolute -bottom-10 left-6 p-1 bg-white dark:bg-slate-800 rounded-full">
+<div class="size-20 bg-slate-100 rounded-full bg-cover bg-center" data-alt="Professional headshot of a female software engineer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAIYrCxFr0PfuniywXVeBTWBB_luLcaSSHD78fcCY7gE-8uIM9c33LSp7UC5SlD_Wca78rGcQCgBw_13giY1hTWhdxlYlYtiNkEceV5HyALgJqgvPTukdmHsYxP0siDGon4jve6HyaPh0YOrtWAlThGTYhkwnPF_Eb_wRB4xVdpPu1Fq1cW2Mp4J0d16WaV8qH1droo_PwNuhxrpMnKmrWg6Zrtfy_PQQEGqKCqx-cIl0w56Q80ripwLTNWYSaExrtT58JgFzasdkc");'></div>
+</div>
+</div>
+<div class="pt-12 p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Alex Rivera</h3>
+<span class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded">'21</span>
+</div>
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Software Engineer</p>
+<p class="text-sm text-slate-500 flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">corporate_fare</span>
+                                    Google
+                                </p>
+<div class="mt-auto pt-6 flex gap-2">
+<button class="flex-1 bg-primary text-white py-2 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                                        Connect
+                                    </button>
+<button class="px-3 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined text-[20px] pt-1">mail</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col">
+<div class="h-24 bg-gradient-to-r from-slate-700 to-slate-500 relative">
+<div class="absolute -bottom-10 left-6 p-1 bg-white dark:bg-slate-800 rounded-full">
+<div class="size-20 bg-slate-100 rounded-full bg-cover bg-center" data-alt="Portrait of a male product manager in professional attire" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC0AWoYiZWDcDPNZTbnlEvnGkRGfxS_NBf6PfaIw7OKw24T8naiB_1EHsRkuH-d8xUb9lNk8Lq-Dvk7VJ6DUYdSyB_r-mwDmpYL1RRq294cHySOd9lOjGwtAXmnfvk9qE1u3fACaDB1kzvRBmi8W_MlBrezsT-aYV4DGNm06CdvjNfxMvcdOuyXkGw7lBeBf-mamZJ75a_HmvX2DiDiSzsppFwftTtLU9cNnnsINLk9wq53e14Y8Ld_O4XzDQRRDhqBlITEJEuVE_I");'></div>
+</div>
+</div>
+<div class="pt-12 p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Jordan Smith</h3>
+<span class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded">'18</span>
+</div>
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Product Manager</p>
+<p class="text-sm text-slate-500 flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">corporate_fare</span>
+                                    Microsoft
+                                </p>
+<div class="mt-auto pt-6 flex gap-2">
+<button class="flex-1 bg-primary text-white py-2 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                                        Connect
+                                    </button>
+<button class="px-3 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined text-[20px] pt-1">mail</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col">
+<div class="h-24 bg-gradient-to-r from-indigo-800 to-indigo-500 relative">
+<div class="absolute -bottom-10 left-6 p-1 bg-white dark:bg-slate-800 rounded-full">
+<div class="size-20 bg-slate-100 rounded-full bg-cover bg-center" data-alt="Headshot of a smiling female data scientist" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB4H6nBnpqBkZzoUTYYOdGfab_Ocw20oVkyt9MBoZHh5k_EOErluKrXlIIEoAewc41a9_FUjey7BaD2ZGtCoscVDLb8fErAhU7lwginTO8Tqq3J5HrFiBKHAmp3AADH1A1A3fugqWhZUxDfVGWRnv77yccOE19bJVRypQUayn2JEhZg08ylJ_L4O6gK8eilZL1i-AozxNp3AbxjikFW4N29wiZpmbAc-EBQciZtvZrtn_qEzEs42inVnH4yoAnvK3X5LETLnj8k6Fc");'></div>
+</div>
+</div>
+<div class="pt-12 p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Taylor Chen</h3>
+<span class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded">'20</span>
+</div>
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Data Scientist</p>
+<p class="text-sm text-slate-500 flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">corporate_fare</span>
+                                    Meta
+                                </p>
+<div class="mt-auto pt-6 flex gap-2">
+<button class="flex-1 bg-primary text-white py-2 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                                        Connect
+                                    </button>
+<button class="px-3 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined text-[20px] pt-1">mail</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col">
+<div class="h-24 bg-gradient-to-r from-red-800 to-red-500 relative">
+<div class="absolute -bottom-10 left-6 p-1 bg-white dark:bg-slate-800 rounded-full">
+<div class="size-20 bg-slate-100 rounded-full bg-cover bg-center" data-alt="Portrait of a male UX designer looking professional" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDnvfIECxKx2OHErdR7vPINfsb8Q3nr7TQs0vnaSjgV2exW5Ue5xIiL8P4kYjfhhbS4gIcklpYTJ4-CIJxJoEK-aNmHs7n8HyZIF_Sn9PcafCUQtDz7-M8Aw4SK9JospJSzcMEY5pK_tcFzU3UZEuDsQ-xtpgHcxU0mPlLwTK2foImz0030Twz_RMt4N8HaTWSs09c6-xR5RgUMmzr93AapLhgag4jt0WiNFfN-oE06MJswW6-SpV7-ss6hQO2zzlTCyvfzdxnXnXE");'></div>
+</div>
+</div>
+<div class="pt-12 p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Morgan Lee</h3>
+<span class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded">'19</span>
+</div>
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-300">UX Designer</p>
+<p class="text-sm text-slate-500 flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">corporate_fare</span>
+                                    Airbnb
+                                </p>
+<div class="mt-auto pt-6 flex gap-2">
+<button class="flex-1 bg-primary text-white py-2 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                                        Connect
+                                    </button>
+<button class="px-3 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined text-[20px] pt-1">mail</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col">
+<div class="h-24 bg-gradient-to-r from-blue-900 to-blue-600 relative">
+<div class="absolute -bottom-10 left-6 p-1 bg-white dark:bg-slate-800 rounded-full">
+<div class="size-20 bg-slate-100 rounded-full bg-cover bg-center" data-alt="Headshot of a professional female marketing lead" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB477eK7V8Ffmqp9UwdR5gMZTK-9yoeBSkBY5tB9uyzE3ebKBtsUZjxqTQ3VlP3QAi_rGsnCh7j9HUfdE7adxAVocqqI90k3I5ldsv4BO4AFF5ieyhAuZpGxA05Bpcc3zdQATEm2Fxm1BZt3wr_4NM8zLnIw4hGG0Ryl5_KCqEWytW2KG6qn3LoYotA286HpqwfMRIB16NNmGLWbn5Jut7JX6xnfYcsQA5oIqJ5H6LRHsSvcz6-o2DiP8DcKXxQlUC1ZfoB9z1n9pw");'></div>
+</div>
+</div>
+<div class="pt-12 p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Casey Wright</h3>
+<span class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded">'22</span>
+</div>
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Marketing Lead</p>
+<p class="text-sm text-slate-500 flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">corporate_fare</span>
+                                    Stripe
+                                </p>
+<div class="mt-auto pt-6 flex gap-2">
+<button class="flex-1 bg-primary text-white py-2 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                                        Connect
+                                    </button>
+<button class="px-3 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined text-[20px] pt-1">mail</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col">
+<div class="h-24 bg-gradient-to-r from-emerald-800 to-emerald-500 relative">
+<div class="absolute -bottom-10 left-6 p-1 bg-white dark:bg-slate-800 rounded-full">
+<div class="size-20 bg-slate-100 rounded-full bg-cover bg-center" data-alt="Portrait of a male engineering manager" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCEgebpcsHbC_h4NUfdhBm33fGYBtk8wSncYKitiYNLN9WYnPH2oQwyjRE2XY8NXf55GTzx9zLxF_GHTJFvIeB37xvt-3z-8-3MzS3jAqbFcfixzr0jOaH33FC3mdOcVRUsaERfHnT92fJ7gzBNpcyazMsoy5wCvPC2L88pZCV6hnxT0mxZP16xMD6pOK2ADlAxecYcCYsOgky2Tv0sm66Nz3N3uN5EHVIPDnAqmwcCUD5YQbw8bnq2cJWrUpse9pUBB95s1n0S2H8");'></div>
+</div>
+</div>
+<div class="pt-12 p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Riley Davis</h3>
+<span class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded">'17</span>
+</div>
+<p class="text-sm font-semibold text-slate-700 dark:text-slate-300">Engineering Manager</p>
+<p class="text-sm text-slate-500 flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">corporate_fare</span>
+                                    Amazon
+                                </p>
+<div class="mt-auto pt-6 flex gap-2">
+<button class="flex-1 bg-primary text-white py-2 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                                        Connect
+                                    </button>
+<button class="px-3 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined text-[20px] pt-1">mail</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-center gap-2 mt-8 py-4">
+<button class="p-2 rounded hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="size-8 rounded bg-primary text-white text-sm font-bold">1</button>
+<button class="size-8 rounded hover:bg-slate-200 dark:hover:bg-slate-700 text-sm font-medium">2</button>
+<button class="size-8 rounded hover:bg-slate-200 dark:hover:bg-slate-700 text-sm font-medium">3</button>
+<span class="px-2">...</span>
+<button class="size-8 rounded hover:bg-slate-200 dark:hover:bg-slate-700 text-sm font-medium">42</button>
+<button class="p-2 rounded hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</section>
+</main>
+<footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 mt-12 py-10 px-6 md:px-10">
+<div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-3 text-primary opacity-50 grayscale">
+<span class="material-symbols-outlined">school</span>
+<span class="font-bold">AlumniHub</span>
+</div>
+<div class="flex gap-8 text-sm text-slate-500">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Help Center</a>
+<a class="hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<p class="text-sm text-slate-400">© 2024 College Alumni Network. All rights reserved.</p>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

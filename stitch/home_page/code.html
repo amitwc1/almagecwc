@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Govt Engineering College Alumni Network</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined">school</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-primary dark:text-slate-100">GEC Alumni</span>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-semibold text-primary border-b-2 border-primary" href="#">Home</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary transition-colors" href="#">Alumni Directory</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary transition-colors" href="#">Events</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary transition-colors" href="#">Jobs</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center rounded-full bg-primary/5 px-4 py-2 ring-1 ring-primary/10">
+<span class="material-symbols-outlined text-primary text-xl">search</span>
+<input class="border-none bg-transparent focus:ring-0 text-sm w-48 placeholder:text-slate-400" placeholder="Find alumni..." type="text"/>
+</div>
+<button class="rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-white hover:bg-primary/90 transition-all shadow-sm">
+                    Login
+                </button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative h-[600px] w-full overflow-hidden">
+<div class="absolute inset-0 bg-primary/40 z-10"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent z-20"></div>
+<div class="absolute inset-0 z-0 bg-cover bg-center" data-alt="Classic grand university campus building with pillars" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCGpjNje_Ctr60zAQUEjXjbwMjjXFavFQYPyWmP0VQlpln53pa1aOQjtNtuvQ7P7UT8k9wjnt-o0Te8Ypl8wAYsH5JMB8VFK1ry26wQ6hMJFOcIQlIiIYDXheNr2KDyXNsn_5JBZcAPv31VcdHG-x6_--kf2QFfx_xDtneZW5ZyvZzdINmYIe_O6lMN0O-YeY_eeaNW2CEKTPlJuLO1ljsLUT5bBuK55D2ZXB7zJ78OQk5YOYf-s0jcCopoFSfC7rwl43x7el892pQ");'></div>
+<div class="relative z-30 mx-auto flex h-full max-w-7xl flex-col justify-center px-6">
+<div class="max-w-2xl space-y-6">
+<h1 class="text-5xl font-extrabold leading-tight text-white lg:text-6xl">
+                        Legacy of <span class="text-blue-300">Excellence</span>, Community of Leaders.
+                    </h1>
+<p class="text-lg text-slate-100/90 leading-relaxed">
+                        The official alumni network of Government Engineering College. Reconnect with peers, mentor the next generation, and access exclusive career opportunities.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="rounded-lg bg-white px-8 py-3 text-base font-bold text-primary hover:bg-slate-100 transition-all shadow-lg">
+                            Join the Network
+                        </button>
+<button class="rounded-lg bg-primary/30 border border-white/30 px-8 py-3 text-base font-bold text-white backdrop-blur-sm hover:bg-primary/40 transition-all">
+                            Explore Directory
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="py-16 bg-white dark:bg-background-dark/50">
+<div class="mx-auto max-w-7xl px-6">
+<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+<!-- Stat Card 1 -->
+<div class="group flex flex-col items-center rounded-xl border border-primary/10 bg-background-light p-8 text-center transition-all hover:shadow-md dark:bg-slate-800/50">
+<div class="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+<span class="material-symbols-outlined text-3xl">groups</span>
+</div>
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white">15,000+</h3>
+<p class="mt-2 font-medium text-slate-500 dark:text-slate-400">Total Alumni</p>
+<span class="mt-2 text-xs font-bold text-green-600">+5% this year</span>
+</div>
+<!-- Stat Card 2 -->
+<div class="group flex flex-col items-center rounded-xl border border-primary/10 bg-background-light p-8 text-center transition-all hover:shadow-md dark:bg-slate-800/50">
+<div class="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white">450+</h3>
+<p class="mt-2 font-medium text-slate-500 dark:text-slate-400">Active Mentors</p>
+<span class="mt-2 text-xs font-bold text-green-600">+12% growth</span>
+</div>
+<!-- Stat Card 3 -->
+<div class="group flex flex-col items-center rounded-xl border border-primary/10 bg-background-light p-8 text-center transition-all hover:shadow-md dark:bg-slate-800/50">
+<div class="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+<span class="material-symbols-outlined text-3xl">work</span>
+</div>
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white">120+</h3>
+<p class="mt-2 font-medium text-slate-500 dark:text-slate-400">Jobs Posted</p>
+<span class="mt-2 text-xs font-bold text-green-600">8 new today</span>
+</div>
+<!-- Stat Card 4 -->
+<div class="group flex flex-col items-center rounded-xl border border-primary/10 bg-background-light p-8 text-center transition-all hover:shadow-md dark:bg-slate-800/50">
+<div class="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+<span class="material-symbols-outlined text-3xl">event</span>
+</div>
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white">12</h3>
+<p class="mt-2 font-medium text-slate-500 dark:text-slate-400">Upcoming Events</p>
+<span class="mt-2 text-xs font-bold text-primary">View Calendar</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Latest Updates Section -->
+<section class="py-20">
+<div class="mx-auto max-w-7xl px-6">
+<div class="flex items-end justify-between pb-10">
+<div>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white">Latest Community Updates</h2>
+<p class="mt-2 text-slate-500 dark:text-slate-400">Stay connected with recent news and milestones from our global alumni network.</p>
+</div>
+<a class="hidden sm:flex items-center gap-2 text-sm font-bold text-primary" href="#">
+                        View All News
+                        <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+<!-- Update 1 -->
+<div class="overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-slate-200 transition-all hover:-translate-y-1 hover:shadow-lg dark:bg-slate-800 dark:ring-slate-700">
+<div class="h-48 w-full bg-cover bg-center" data-alt="A crowd of alumni at a formal gala dinner" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAaJyDRBIBH7OiR2nujDX32X5y-WJhqKC9iE0MFr71L7arSFLzWBLsQW255HUFpXOcmlkFk9yu3PVMiTPnpQJUF508EEb_yVEjDN0PaUdsbrLcrZFMShRiitlW565WEZMVplpfT5yQPe2MvRtXhpc5i2hrrnLAHBXznPa_S18AOPa7N9k1ZSmxVWvo8xXgBY8_REg-6cVwTR5L-OE49cAxIbMuZjz685fX1qDb_o1wvnBzocbjSWaBsvWbfXn-LfCfJI2lUcputDXk");'></div>
+<div class="p-6">
+<span class="text-xs font-bold uppercase tracking-wider text-primary">Global Meet</span>
+<h3 class="mt-2 text-xl font-bold text-slate-900 dark:text-white">Annual Alumni Meet 2024</h3>
+<p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Join us for a weekend of nostalgia and networking this December at the main campus.</p>
+<div class="mt-6 flex items-center justify-between border-t border-slate-100 pt-4 dark:border-slate-700">
+<span class="flex items-center gap-1 text-sm text-slate-400"><span class="material-symbols-outlined text-sm">calendar_today</span> Dec 15, 2024</span>
+<button class="text-sm font-bold text-primary">Register Now</button>
+</div>
+</div>
+</div>
+<!-- Update 2 -->
+<div class="overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-slate-200 transition-all hover:-translate-y-1 hover:shadow-lg dark:bg-slate-800 dark:ring-slate-700">
+<div class="h-48 w-full bg-cover bg-center" data-alt="Students and engineers in a modern high-tech research lab" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCj3sxIOXJtu1GGA3he3eaa-E3Q6wWW4bMsrsg4lmLVpA84VLFsDIWJTquiFfpT8iSABu9FzJzeYUc947lJhPP3zcYR37_fX2rLCNpoyPMtwHMJ25hoJvWZkX0on-CIZdKvyhEtBKhLFLBxhpvCfgwx6ptCdXeyreVPluTimErRprt3OQS3NPHgOwsP_jqvs7nC4x-JuIkZ5Odw7PvHAyW5r5ag3rdS3iUsJ4xguoT6gUaSHBs_XdQum4JlECNnFJMoF6JBLMm8rdc");'></div>
+<div class="p-6">
+<span class="text-xs font-bold uppercase tracking-wider text-primary">Campus News</span>
+<h3 class="mt-2 text-xl font-bold text-slate-900 dark:text-white">New AI Research Lab Opening</h3>
+<p class="mt-2 text-sm text-slate-500 dark:text-slate-400">GEC inaugurates a state-of-the-art AI lab funded by the Class of 1995 foundation.</p>
+<div class="mt-6 flex items-center justify-between border-t border-slate-100 pt-4 dark:border-slate-700">
+<span class="flex items-center gap-1 text-sm text-slate-400"><span class="material-symbols-outlined text-sm">location_on</span> Main Campus</span>
+<button class="text-sm font-bold text-primary">Read More</button>
+</div>
+</div>
+</div>
+<!-- Update 3 -->
+<div class="overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-slate-200 transition-all hover:-translate-y-1 hover:shadow-lg dark:bg-slate-800 dark:ring-slate-700">
+<div class="h-48 w-full bg-cover bg-center" data-alt="A presenter speaking at a global online conference" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBxf4H21LriUW_VytZaBTPY3QSFk_qQLpyauw0v7kUgag_2qoSvt4Iqh_VTbXCiyb21-O4gA_RNKiFQWzqLexYJFXm4wdgMuuix0synMbiR3GccJgJC0II9IXvizIWOtKnFHzXU7TFUJsyl3yO1nDbksul7NJ1gl8UR6oPFBDcICtfQEHt0zZvKF_J1vZ10agu8il5L42bQmz3KEivhqDFPn_VldQVYUmjwMpqG4lYUgikhg4DwzOH4OchfbrdmR_z6jDhYj1zrTr0");'></div>
+<div class="p-6">
+<span class="text-xs font-bold uppercase tracking-wider text-primary">Development</span>
+<h3 class="mt-2 text-xl font-bold text-slate-900 dark:text-white">Global Webinar Series</h3>
+<p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Learn from industry veterans about the future of Sustainable Engineering in our monthly series.</p>
+<div class="mt-6 flex items-center justify-between border-t border-slate-100 pt-4 dark:border-slate-700">
+<span class="flex items-center gap-1 text-sm text-slate-400"><span class="material-symbols-outlined text-sm">laptop_mac</span> Virtual Event</span>
+<button class="text-sm font-bold text-primary">Save Seat</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary text-white">
+<div class="mx-auto max-w-7xl px-6 py-16">
+<div class="grid grid-cols-1 gap-12 lg:grid-cols-4">
+<!-- Branding -->
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<div class="flex h-12 w-12 items-center justify-center rounded-lg bg-white text-primary">
+<span class="material-symbols-outlined text-2xl font-bold">school</span>
+</div>
+<span class="text-2xl font-bold tracking-tight">GEC Alumni</span>
+</div>
+<p class="text-sm text-blue-100/70 leading-relaxed">
+                        Uniting graduates of Government Engineering College worldwide since 1956. Empowering our community through connection and collaboration.
+                    </p>
+<div class="flex gap-4">
+<a class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all" href="#"><span class="material-symbols-outlined">social_leaderboard</span></a>
+<a class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all" href="#"><span class="material-symbols-outlined text-lg">public</span></a>
+<a class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all" href="#"><span class="material-symbols-outlined">mail</span></a>
+</div>
+</div>
+<!-- Quick Links -->
+<div>
+<h4 class="text-lg font-bold mb-6">Quick Links</h4>
+<ul class="space-y-4 text-sm text-blue-100/70">
+<li><a class="hover:text-white transition-colors" href="#">Find Alumni</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Upcoming Events</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Job Board</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Mentorship Program</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Success Stories</a></li>
+</ul>
+</div>
+<!-- Support -->
+<div>
+<h4 class="text-lg font-bold mb-6">Resources</h4>
+<ul class="space-y-4 text-sm text-blue-100/70">
+<li><a class="hover:text-white transition-colors" href="#">Campus Map</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Transcript Request</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Giving Back</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<!-- Contact Info -->
+<div>
+<h4 class="text-lg font-bold mb-6">Contact Us</h4>
+<ul class="space-y-4 text-sm text-blue-100/70">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-300">location_on</span>
+<span>Main Campus, Engineering College Road,<br/>City Center, State - 400001</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-blue-300">call</span>
+<span>+91 22 1234 5678</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-blue-300">email</span>
+<span>alumni.relations@gec.edu</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="mt-16 border-t border-white/10 pt-8 text-center text-xs text-blue-100/40">
+<p>© 2024 Government Engineering College Alumni Association. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</body></html>

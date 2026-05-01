@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Alumni Job Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-primary/10 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6 md:px-20 py-4">
+<div class="mx-auto flex max-w-7xl items-center justify-between">
+<div class="flex items-center gap-10">
+<div class="flex items-center gap-2">
+<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined">school</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight text-primary dark:text-slate-100">AlumniConnect</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-semibold text-primary" href="#">Find Jobs</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary" href="#">Companies</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary" href="#">My Network</a>
+<a class="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary" href="#">Resources</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden lg:flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<div class="h-10 w-10 rounded-full border-2 border-primary/20 bg-cover bg-center" data-alt="User profile picture of an alumnus" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAQv9E07o6_Brrfvl9p81mP6OarfieyWM0hl-mv0OWPa6WXzfahzpAkDmGRT8FfzthuytZnRBS9TWvvCwigRJ0D-Wbr9GxyxHrkp7b3oT_yvV2XJRzs7lG6g6cUyxDDvdZvsQccdvG-YlwyYyIX8-Qyva9Imf8Wa5kcNBGcPYMgIPCyakuiWCRQCLhlE2-YOmWZng1mNNC_vyc3JhzQEn4CCjhFiWimeTxyIx2LDiRL0XcrLjbnyXnt3nXUwSdTXsXzMbU006baq6o')"></div>
+</div>
+</div>
+</header>
+<main class="mx-auto w-full max-w-7xl px-6 md:px-20 py-8">
+<!-- Search & Filters Section -->
+<section class="mb-10 flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<h1 class="text-3xl font-bold text-slate-900 dark:text-slate-100">Exclusive Alumni Opportunities</h1>
+<p class="text-slate-500 dark:text-slate-400">Showing 124 jobs curated for your graduating class and network.</p>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-3 bg-white dark:bg-slate-800 p-3 rounded-xl shadow-sm border border-primary/5">
+<div class="flex flex-1 items-center gap-2 px-4 border-r border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-primary">search</span>
+<input class="w-full border-none bg-transparent focus:ring-0 text-sm py-2" placeholder="Job title, keywords, or company" type="text"/>
+</div>
+<div class="flex flex-1 items-center gap-2 px-4 border-r border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<input class="w-full border-none bg-transparent focus:ring-0 text-sm py-2" placeholder="City, state, or remote" type="text"/>
+</div>
+<button class="w-full md:w-auto px-8 py-2.5 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition-colors">
+                        Search Jobs
+                    </button>
+</div>
+<div class="flex flex-wrap gap-2">
+<button class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold border border-primary/20">
+                        Full-time <span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700">
+                        Remote <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700">
+                        Salary Range <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700">
+                        Experience <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</section>
+<!-- Job Listings Grid -->
+<div class="grid grid-cols-1 gap-4">
+<!-- Job Card 1 -->
+<div class="group flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-white dark:bg-slate-800 rounded-xl border border-primary/5 hover:border-primary/20 hover:shadow-md transition-all">
+<div class="flex items-start gap-5">
+<div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700">
+<img class="h-10 w-10 object-contain" data-alt="Logo of a tech company specializing in AI" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo6m2o-BISlDGYi2gEJspCLlAnGYRktk92-ECSvuS1Ph17KtBvAYQJBQFk_o5VEpDu_gAUDccQEHjAnuq4ki-bn_qszEK9QQ9muT29QzfnnvgDBDvVw6GDFEoEUJLrqwIWHFInEMV4eFVuBZQSXVjbLktBhQABmXmrhJAw_t_w3tgeiWWq0n4Mvttc_dZd9KewCrfsh5qo1aImFsutZIdPS7ZbzXnX_nuMDP9WFjtDg7MVND4ueQTsQeSvm3FMhbnj3ncSYprETVc"/>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-primary transition-colors">Senior Product Designer</h3>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-slate-500 dark:text-slate-400">
+<span class="flex items-center gap-1 font-medium text-primary">Stellar AI</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">location_on</span>San Francisco, CA (Remote)</span>
+<span class="flex items-center gap-1 font-semibold text-slate-900 dark:text-slate-200">$140k – $190k</span>
+</div>
+<div class="mt-2 flex gap-2">
+<span class="px-2 py-0.5 rounded bg-primary/5 text-primary text-[10px] font-bold uppercase tracking-wider">Alumni Referral Available</span>
+</div>
+</div>
+</div>
+<div class="mt-6 md:mt-0 flex items-center gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-700">Save</button>
+<button class="flex-1 md:flex-none px-6 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:bg-primary/90">Apply Now</button>
+</div>
+</div>
+<!-- Job Card 2 -->
+<div class="group flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-white dark:bg-slate-800 rounded-xl border border-primary/5 hover:border-primary/20 hover:shadow-md transition-all">
+<div class="flex items-start gap-5">
+<div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700">
+<img class="h-10 w-10 object-contain" data-alt="Logo of a global logistics corporation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSWdVpPi06QkorbpN0GU5ZGrCmgX6kQmvtmHh3it_mEkC33R6rw6JzIP2hvjbIB6qdl99CZgwvo-yzSbS0CSdgIrtSkow_UGhsdGlN7W0I5yGhdf5T6G5G3_ixUT1-IyYgraG36T7rWq1PrNHjtOhRUt2PkTZHuWAMq6px-DcBrSW-y13FJc7W77CSaCGTkhFUlrdVgniR96SecWtijbEw8ZQkJUy8tRCLC9cR5GBqvx2u_DpDJSoQG12igG3Op9AVYvmT10TPBUQ"/>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-primary transition-colors">Supply Chain Manager</h3>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-slate-500 dark:text-slate-400">
+<span class="flex items-center gap-1 font-medium text-primary">Global Logistics Group</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">location_on</span>Chicago, IL</span>
+<span class="flex items-center gap-1 font-semibold text-slate-900 dark:text-slate-200">$95k – $130k</span>
+</div>
+<div class="mt-2 flex gap-2">
+<span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase tracking-wider">Posted 2h ago</span>
+</div>
+</div>
+</div>
+<div class="mt-6 md:mt-0 flex items-center gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-700">Save</button>
+<button class="flex-1 md:flex-none px-6 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:bg-primary/90">Apply Now</button>
+</div>
+</div>
+<!-- Job Card 3 -->
+<div class="group flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-white dark:bg-slate-800 rounded-xl border border-primary/5 hover:border-primary/20 hover:shadow-md transition-all">
+<div class="flex items-start gap-5">
+<div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700">
+<img class="h-10 w-10 object-contain" data-alt="Logo of a sustainable energy startup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC37JW6JBZtqnG0ac4vtaqvv8AtS83vqaK5x6GezS52QL0zAkREfQulMcWlfosnV5uKg2Sa9nSFx33M_Xzo3MNxTS28PYHoA55V9NzhBit55PPL2qu6OWIdUmqlQAOzL7y0qJYPCoOqNyr_muHVU6fhkXhV-amB_QgrFSQ0RQNyE81Tn0ZrNrG15iacyrc6-ghXZGIAOWPEj0yNPV0rLwezzlf_zhW6p5ByKz9mdJ622TgPXSNQNs4yPEG4hfDETPHXUIVQwrEJlcg"/>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-primary transition-colors">Full Stack Developer (Next.js)</h3>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-slate-500 dark:text-slate-400">
+<span class="flex items-center gap-1 font-medium text-primary">EcoGrid Solutions</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">location_on</span>Austin, TX</span>
+<span class="flex items-center gap-1 font-semibold text-slate-900 dark:text-slate-200">$120k – $165k</span>
+</div>
+<div class="mt-2 flex gap-2">
+<span class="px-2 py-0.5 rounded bg-primary/5 text-primary text-[10px] font-bold uppercase tracking-wider">5 Alumni Work Here</span>
+</div>
+</div>
+</div>
+<div class="mt-6 md:mt-0 flex items-center gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-700">Save</button>
+<button class="flex-1 md:flex-none px-6 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:bg-primary/90">Apply Now</button>
+</div>
+</div>
+<!-- Job Card 4 -->
+<div class="group flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-white dark:bg-slate-800 rounded-xl border border-primary/5 hover:border-primary/20 hover:shadow-md transition-all">
+<div class="flex items-start gap-5">
+<div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-700">
+<img class="h-10 w-10 object-contain" data-alt="Logo of a healthcare technology provider" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS26D23NA8qONz6n2YV_5LtoLClljKqRxtfK0P7lED6-BcQlQFwOyPJpk-W3IFw4Lk45Jhb5MCFMvWhDUDaZ8me0RwyPkvrz3aRHZFzDxK-sHauj9PoY02wuQQE4zxaY32MQoQ9SMGNgk6fJxpkK77heI_Wj6_718RVxM91GoYBUmz85G4X0XT6_59MvZeQf86EN6TsbPMfsH1WbWTPXx2Sj4chDobQ2mmu2mkOpgf2Em3eceFhQns3-IYeWc3s9nTH5Ojc0qoOGs"/>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 group-hover:text-primary transition-colors">Clinical Operations Lead</h3>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-slate-500 dark:text-slate-400">
+<span class="flex items-center gap-1 font-medium text-primary">HealthBridge Tech</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">location_on</span>Boston, MA</span>
+<span class="flex items-center gap-1 font-semibold text-slate-900 dark:text-slate-200">$110k – $145k</span>
+</div>
+<div class="mt-2 flex gap-2">
+<span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase tracking-wider">Remote Optional</span>
+</div>
+</div>
+</div>
+<div class="mt-6 md:mt-0 flex items-center gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-700">Save</button>
+<button class="flex-1 md:flex-none px-6 py-2 rounded-lg bg-primary text-white text-sm font-bold hover:bg-primary/90">Apply Now</button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex items-center justify-center gap-4">
+<button class="flex items-center justify-center p-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="h-10 w-10 rounded-lg bg-primary text-white font-bold">1</button>
+<button class="h-10 w-10 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">2</button>
+<button class="h-10 w-10 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">3</button>
+<span class="px-2">...</span>
+<button class="h-10 w-10 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">12</button>
+</div>
+<button class="flex items-center justify-center p-2 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</main>
+<footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark py-10 px-6 md:px-20">
+<div class="mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2 grayscale opacity-70">
+<div class="flex h-8 w-8 items-center justify-center rounded bg-primary text-white">
+<span class="material-symbols-outlined text-[18px]">school</span>
+</div>
+<span class="font-bold text-slate-900 dark:text-slate-100">AlumniConnect</span>
+</div>
+<div class="flex gap-8 text-sm text-slate-500 dark:text-slate-400">
+<a class="hover:text-primary" href="#">Privacy Policy</a>
+<a class="hover:text-primary" href="#">Terms of Service</a>
+<a class="hover:text-primary" href="#">Contact Support</a>
+</div>
+<p class="text-sm text-slate-400 dark:text-slate-500">© 2024 Alumni Jobs Network. All rights reserved.</p>
+</div>
+</footer>
+</div>
+</body></html>

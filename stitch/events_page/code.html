@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Alumni Connect - Events</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6 md:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary text-white rounded-lg">
+<span class="material-symbols-outlined">school</span>
+</div>
+<h2 class="text-primary text-xl font-bold leading-tight tracking-[-0.015em] dark:text-slate-100">Alumni Connect</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-primary dark:text-slate-300 text-sm font-semibold leading-normal hover:text-primary/70" href="#">Events</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium leading-normal hover:text-primary" href="#">News</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium leading-normal hover:text-primary" href="#">Directory</a>
+<a class="text-slate-600 dark:text-slate-400 text-sm font-medium leading-normal hover:text-primary" href="#">Giving</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 md:gap-8 items-center">
+<label class="hidden sm:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-primary/60 flex border-none bg-primary/5 items-center justify-center pl-4 rounded-l-lg" data-icon="search">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 focus:outline-0 focus:ring-2 focus:ring-primary/20 border-none bg-primary/5 focus:border-none h-full placeholder:text-primary/40 px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search events..." value=""/>
+</div>
+</label>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-primary/10" data-alt="User profile picture of a young professional alumni" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCKyjE9CjqdifnlYNpARYO5ujHEJAE60rrZ1Y2g67nuB2j09sdJPKeW6wv8280gM3zK4IRJa-x2Am8BUbXMGa7HwDsrG5b7daRIizO64Ofy82CRGS1OGdot1SjBEKhVK9TroFilOC6Ia_K1rPWR5C3Gk5kNHH6iZldaigpR9WCoRNjLx2cZiKQ6xW2dIBtxefd1-hJ3BqzK7Hpr-iBT3I5CFYPsO1gFKJ6R1aAM4MNQQ0OtEAuu-Fjy4Yg5Df_8ngYpyMC5j5VB9QY");'></div>
+</div>
+</header>
+<main class="flex-1 px-4 md:px-10 lg:px-20 py-8 max-w-7xl mx-auto w-full">
+<section class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="flex flex-col gap-2">
+<h1 class="text-slate-900 dark:text-slate-100 text-4xl font-black leading-tight tracking-tight">Alumni Events</h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg max-w-2xl">Discover opportunities to reconnect, learn, and grow with your global alumni network.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="bg-primary/10 text-primary px-4 py-2 rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+<span class="text-sm font-semibold">Filter</span>
+</div>
+<div class="bg-primary text-white px-4 py-2 rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+<span class="text-sm font-semibold">My Calendar</span>
+</div>
+</div>
+</section>
+<div class="flex gap-3 mb-10 pb-2 overflow-x-auto no-scrollbar border-b border-primary/5">
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary text-white px-6">
+<span class="text-sm font-bold">Upcoming</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-background-dark border border-primary/10 px-6 hover:bg-primary/5">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Reunions</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-background-dark border border-primary/10 px-6 hover:bg-primary/5">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Workshops</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-background-dark border border-primary/10 px-6 hover:bg-primary/5">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Networking</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-background-dark border border-primary/10 px-6 hover:bg-primary/5">
+<span class="text-slate-700 dark:text-slate-300 text-sm font-medium">Global Chapters</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="group flex flex-col bg-white dark:bg-background-dark rounded-xl overflow-hidden shadow-sm border border-primary/5 hover:shadow-xl transition-all">
+<div class="relative w-full aspect-[16/10] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Elegant gala ballroom with decorative lighting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBuvxi_skYzJVxIMeu8fSN9dt3iS1OkmpL-II-1otB67Ls1WeqXZvxKa2olw63HBa3pM8Qvo2hrBoJH9n4BI8m1V630SJAgv8mhnn3eMEv9Qu7u-rNqt_Zwi7ZGaZGZB_E_Igy8WoBEvcRk1oQqJ9eA-TeuFvqe5LeuZ5MYlx_aFRGBor5IZK3C528ChYp_6pcjf4QQlYU3Y8-AIX6YS-2czXbpGQeBvNTaaR1BstzHfgMaOm-XDxHuBp2UR6SJjvJfG4jH3I_6b2w");'></div>
+<div class="absolute top-4 right-4 bg-white/90 dark:bg-background-dark/90 px-3 py-1 rounded text-xs font-bold text-primary uppercase tracking-wider">Featured</div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-lg">event</span>
+<span class="text-primary font-semibold text-sm">October 24, 2024</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 leading-snug group-hover:text-primary transition-colors">Annual Grand Alumni Gala</h3>
+<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 mb-6 text-sm">
+<span class="material-symbols-outlined text-lg">location_on</span>
+<span data-location="New York City">Grand Hyatt, New York</span>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="size-8 rounded-full border-2 border-white dark:border-background-dark bg-cover" data-alt="User avatar small" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBrsS4ETa4IKoxBVEbcgCkeGacgoyObdk124z5XHSj7RHVT5yYF0ZREieTXJU2nIWBbj2SwP23C_djKE603evcb09rDJeoHPLAeuT7YzVGLqqiJJGxt-729d-Es6y9ihDMcEYQyKdp9Z9trIjMU2Q7M8-sO5UUB2jwGqVSYCvU6GQjeRxz9R4xi-KDBefNU7TGCvFfPOl90E6TFe0VgtuA3D3OnXqjgYcR2lhB6l4HDlSYMO3M08726FJ6D0WG1PrQL2Qf74HFlMJQ");'></div>
+<div class="size-8 rounded-full border-2 border-white dark:border-background-dark bg-cover" data-alt="User avatar small" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDnaTTo1s9-q_SVTEWrgzl7zhNinqqBuXjNAXxA-hS22ZLzwEFJBFR1s0CLsWaae0Q4YM5MXSleODQAdGZDBXy6omq7EpsV_0vPYr_R10taVj_1Ol8rnVUz2-A4GctSL9ilbc3z1iCNOGvf4NELDoAAGiQpsGfpg4hQlWvyil0dD6pL7lko7Ge4vGJUp9mS40mysJjo9HHbfm2pyKLJENw4qTsAxdq6ZRtrs-iW1-8t6Yo1pgjc23kYj-oVS8seXs14XlHRf1msySo");'></div>
+<div class="size-8 rounded-full border-2 border-white dark:border-background-dark bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">+120</div>
+</div>
+<button class="bg-primary text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-primary/90 transition-colors">Register</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-background-dark rounded-xl overflow-hidden shadow-sm border border-primary/5 hover:shadow-xl transition-all">
+<div class="relative w-full aspect-[16/10] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Business professionals networking at a tech workshop" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuArMU40IkidXBIyVKhNGC3XNub211ej7BpBzQuSe8Mc4YYk1FUOBve2kguXBBRJnK4mvGkIvQyeKkhkx_HTWLS0GS0ToxTT4nSB3_zh_1ZruGrDzj165YbKDRedqWbaZm01wxrfdLIBm1zBC_Vm5VDITNQs5L1noOx01p1o_S_FFshS2V2qXiQKgNocgO8N1TdkGVOY8SSLlw_bbGUSjly7Ag9yqfKsbPRP1tY_dqa5kHZNlLoPqr-vAAQ41qfP9NvBIvdi9qDFiNY");'></div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-lg">event</span>
+<span class="text-primary font-semibold text-sm">November 12, 2024</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 leading-snug group-hover:text-primary transition-colors">Tech Leadership Summit</h3>
+<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 mb-6 text-sm">
+<span class="material-symbols-outlined text-lg">location_on</span>
+<span data-location="San Francisco">Innovation Hub, San Francisco</span>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="size-8 rounded-full border-2 border-white dark:border-background-dark bg-cover" data-alt="User avatar small" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCR2JHKKT3Fik2QbMdlguUsaY8aCLGicm3ZXcQeGsguTc9sMf_LjiGMetgq_KWOb91m3sXSY5yu9G4XwICUN5-C7d7ba3IOGTNNe0zzTIAaO1WMhACYUOjKznxi6A24_XrcoZI-Cic_zmsP8uNLWEY4ZZvlJ_R5aj51YoaMdoK77Gww2brxn0fXK4U447DrYCI9bHApwWvMXX34dgwHbv5v5SaGRo-tJ9vWd58Yssr4RGx9BQ9SZxO_-rLb85hmoUbiyRP2iFU9IgM");'></div>
+<div class="size-8 rounded-full border-2 border-white dark:border-background-dark bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">+45</div>
+</div>
+<button class="bg-primary text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-primary/90 transition-colors">Register</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-background-dark rounded-xl overflow-hidden shadow-sm border border-primary/5 hover:shadow-xl transition-all">
+<div class="relative w-full aspect-[16/10] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Outdoor campus picnic and networking event" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAxr94M3XAPxB_su4KyZMbAH8xlPavJ70faXiV44vCv_PLeTO0ftcDDyF7Fcp2gdvquDdFdRJLunkBr1DfNC4lJqpliUPvoif_Cp-SuW5sAXMbYhAiyGiafXIVlUwCgEA7fmUDGHNbEhvH0oZY-hBycqETPUhcEPnvnkSwrzuM5GAHqVNl0Hv6tdqLevgmYQI-wJzp5wCLKVwzykLut_G_FJ2mtD3_P5kdg4Wb4zIGpBRRTyaSe-nNUzPJgQc3l2_zFQb1pX23k5DY");'></div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-lg">event</span>
+<span class="text-primary font-semibold text-sm">December 05, 2024</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 leading-snug group-hover:text-primary transition-colors">London Chapter Meetup</h3>
+<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 mb-6 text-sm">
+<span class="material-symbols-outlined text-lg">location_on</span>
+<span data-location="London">The Shard, London</span>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="size-8 rounded-full border-2 border-white dark:border-background-dark bg-cover" data-alt="User avatar small" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA1gmE6GDlDApkFsEbTi8UVriRp2fEZEryv4cDwKJO0n0tdjqL78NKCodTkhaXw4yMPKkRA8t625w8Mu1CC0xBFe9WuuOMTWjBr9XtgvvgyZA3q7zeouXfBZYitcXnR36MfOUeP8ftzzv-v-fewnBAh9N5zvw84tmqwhF_fhyZXD1gwmwJvReTjNnNo14tMIyPpkPFN6HvrPGkOGoUHyumo3RLCOg2fv40-xC9VbjHA1q9ZqAFcf9CqoUunUJzwKJUmm8ICzm3i1c0");'></div>
+<div class="size-8 rounded-full border-2 border-white dark:border-background-dark bg-cover" data-alt="User avatar small" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC3DqKM2beuB2gn1MGxyXdLY08wz7f8MSBGwB-jv7o9Hm7fvUDrLmuEGH2aeG0r_kWVp6L2k1eccMVeSq6NEorF_u9bJ-OXczEW66PfYF6BsJoIaJZcWsCnaW1YZ582DNEMyaDDI5f1OjYfcShREj2S7NsyMarrV-MFk5InNlOOPsPWgIbbigkbPLUJBQDDO3Nsml1uJ-O0fGWAc2MPzAYzuAFrj6Bgw-PICund7biVa2tiZCkip8cH0mhbZ2qLB1l40o9QrShl56U");'></div>
+<div class="size-8 rounded-full border-2 border-white dark:border-background-dark bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">+88</div>
+</div>
+<button class="bg-primary text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-primary/90 transition-colors">Register</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-background-dark rounded-xl overflow-hidden shadow-sm border border-primary/5 hover:shadow-xl transition-all">
+<div class="relative w-full aspect-[16/10] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Speaker presenting to an audience in a lecture hall" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAJAfyViXZ50o1Wq81JP54gZJrcyfSs5WE8M6JAeyDldQNaaW7W-ocH3qtRHsSFW8OoYKGI4nWMYwxhTf4L08VwLYxSIPxuSoK6ce3SX_tGHpj_LbYyilytEJIkUCmnYs7Q9BY3uE34IWYqapa6a3Q0klKEVVFsIJelvv2-xUnGlnQ0lgwVf2iBwP0fYNuoC61meQlWOQUpoYMv3VOlwNIAdmaGLL1p8vlyOqNVC7XPwnw4SgrQy2vn8OUlkAv7trHKN7Fk4VC2cyo");'></div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-lg">event</span>
+<span class="text-primary font-semibold text-sm">January 15, 2025</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 leading-snug group-hover:text-primary transition-colors">Entrepreneurship Workshop</h3>
+<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 mb-6 text-sm">
+<span class="material-symbols-outlined text-lg">location_on</span>
+<span data-location="Chicago">Main Campus Hall, Chicago</span>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="size-8 rounded-full border-2 border-white dark:border-background-dark bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">+32</div>
+</div>
+<button class="bg-primary text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-primary/90 transition-colors">Register</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-background-dark rounded-xl overflow-hidden shadow-sm border border-primary/5 hover:shadow-xl transition-all">
+<div class="relative w-full aspect-[16/10] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Group of students and alumni smiling together" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCkpFHz2NrZiX9_zy-yxEDJrMoiSojqV48FJzpEpF-U4ozKeW2J2DgUEWFgkbIqmjlosMbQt_e72CBG1XfH6G1oGboNZmfXmSLmTSyJmxco3EjezRfJejVNCl5VpGJZx6YuKujP0dGjgkCBtzNpc0OvH_lQ78BonKaLI8cOqbj8hzaT_C4UdEn0bVuPfpvC7n0AoHyOzuh1sH9lq03ay38ilI-vQ9EQAIHTTuB-Yvt0-eZyaJKP8madicUbK6wTxHz5WaKYGp2_oQo");'></div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-lg">event</span>
+<span class="text-primary font-semibold text-sm">February 10, 2025</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 leading-snug group-hover:text-primary transition-colors">Class of 2015 Reunion</h3>
+<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 mb-6 text-sm">
+<span class="material-symbols-outlined text-lg">location_on</span>
+<span data-location="Boston">Waterfront Pavilion, Boston</span>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="size-8 rounded-full border-2 border-white dark:border-background-dark bg-cover" data-alt="User avatar small" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCCgYdI30YdJYhF69aL55aUj7Zt1m5XdbLZTDnTEpYZqk4QlYoOlbfSx17dAtrNBVjb7pjA_MlIACVd5vzgtLcs4mJ6ikyeW8r-Qpc6ZTcQLtdeoZhWhVoRqoh2LyYa-V6feHQtxk26_iHHpJ4GINuOhKs16GTFzTWrwalqDAYyn5xkr4n-pYYCfjdbqe7lR1wUOFulXIB4ZXPFNhccvxVZ0m2c5pSN1PxSQJUHbvuJJ8lf1QR2mt3Y6FL7TOhWjgzZrsXbCcIha04");'></div>
+<div class="size-8 rounded-full border-2 border-white dark:border-background-dark bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">+200</div>
+</div>
+<button class="bg-primary text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-primary/90 transition-colors">Register</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col bg-white dark:bg-background-dark rounded-xl overflow-hidden shadow-sm border border-primary/5 hover:shadow-xl transition-all">
+<div class="relative w-full aspect-[16/10] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Team of professionals collaborating in an office" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCGhGLOoEUjChWB4UT8p67CoT9Jo3Gu3hQnszoZTfZ3AHi8VDRWgp707N6M-BjO1NjLhBlHlYwCOMUtskD5ghg08HaE_zqQzu_gqrjZveGmNKz4xT_-9YFx5g8VGHwkohtQfKB5JIiHC0lyeKuxNKRezn1FcCLEB5LA5HzJDPaD1JNAlO2SInnoRPg9ARTwpJLh1DFddfFGlAz5tjzIx0FYL7eYGGTyuSv32sIdH_SUVXaQTcSwL-F1Xi2WGEpgPrpH3OFZ7dZ-XRM");'></div>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-lg">event</span>
+<span class="text-primary font-semibold text-sm">March 22, 2025</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-2 leading-snug group-hover:text-primary transition-colors">Career Mentorship Day</h3>
+<div class="flex items-center gap-2 text-slate-500 dark:text-slate-400 mb-6 text-sm">
+<span class="material-symbols-outlined text-lg">location_on</span>
+<span data-location="Seattle">Library Commons, Seattle</span>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="size-8 rounded-full border-2 border-white dark:border-background-dark bg-cover" data-alt="User avatar small" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCZT3H4aINm0xPNF4US0HVjJRDREaUuenUNXwRB-KOm0iSmzNDG_Yx_uoF9Ynz1897M8OjB6tb7dSGG4sVEem04QYqqBqM-nx-F2M-bL7ghZYaL_2Gv6G9Xp2lQh-a8bplzpfEup2-hu0WBEq8H49_vanuz8iENapCKiKOeSNNnp__nWFs0RRQHXR8Bge5RmyWkkqW7IYNIsf9uGat0tlZ3J3pz5BmUb2tiZ2K2e2SoMCazZQrtRYRZ_DQVEzYkdzy-N-sC7VVZuLE");'></div>
+<div class="size-8 rounded-full border-2 border-white dark:border-background-dark bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">+64</div>
+</div>
+<button class="bg-primary text-white px-5 py-2 rounded-lg font-bold text-sm hover:bg-primary/90 transition-colors">Register</button>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-16 text-center">
+<button class="bg-primary/5 text-primary border border-primary/10 px-8 py-3 rounded-lg font-bold hover:bg-primary/10 transition-all">Load More Events</button>
+</div>
+</main>
+<footer class="mt-20 border-t border-primary/10 bg-white dark:bg-background-dark py-12 px-10">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-6 flex items-center justify-center bg-primary text-white rounded">
+<span class="material-symbols-outlined text-xs">school</span>
+</div>
+<h2 class="text-primary text-lg font-bold leading-tight dark:text-slate-100">Alumni Connect</h2>
+</div>
+<div class="flex gap-8 text-slate-500 dark:text-slate-400 text-sm font-medium">
+<a class="hover:text-primary" href="#">Contact Us</a>
+<a class="hover:text-primary" href="#">Privacy Policy</a>
+<a class="hover:text-primary" href="#">Terms of Service</a>
+<a class="hover:text-primary" href="#">Give Back</a>
+</div>
+<div class="flex gap-4">
+<div class="size-10 rounded-full bg-primary/5 flex items-center justify-center text-primary cursor-pointer hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined">share</span>
+</div>
+<div class="size-10 rounded-full bg-primary/5 flex items-center justify-center text-primary cursor-pointer hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined">rss_feed</span>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-8 pt-8 border-t border-primary/5 text-center text-slate-400 dark:text-slate-500 text-xs">
+                    © 2024 Alumni Connect Association. All rights reserved.
+                </div>
+</footer>
+</div>
+</div>
+</body></html>
