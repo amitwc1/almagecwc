@@ -1,6 +1,10 @@
 import axios from 'axios';
+import { API_URL } from './apiConfig';
 
-const API = axios.create({ baseURL: `${import.meta.env.VITE_API_URL || ''}/api/admin` });
+const API = axios.create({ 
+  baseURL: `${API_URL}/admin`,
+  withCredentials: true 
+});
 const getAuthHeader = (token) => ({ headers: { Authorization: `Bearer ${token}` } });
 
 const adminService = {
