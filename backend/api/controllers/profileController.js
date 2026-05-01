@@ -167,12 +167,18 @@ exports.updateProfile = asyncHandler(async (req, res) => {
       await connection.query('UPDATE users SET name = ? WHERE id = ?', [name, userId]);
     }
 
-    // 3. Update profiles table
-    await connection.query(`
-      UPDATE profiles 
-      SET phone = ?, bio = ?, location = ?, department = ?, graduation_year = ?, roll_number = ?, linkedin = ?, github = ?, portfolio = ?
-      WHERE user_id = ?
-    `, [phone, bio, location, department, graduation_year || null, finalRollNumber, linkedin, github, portfolio, userId]);
+    // 3. Update profiles table - with detailed error check
+    try {
+      await connection.query(`
+        UPDATE profiles 
+        SET phone = ?, bio = ?, location = ?, department = ?, graduation_year = ?, roll_number = ?, linkedin = ?, github = ?, portfolio = ?
+        WHERE user_id = ?
+      `, [phone, bio, location, department, graduation_year || null, finalRollNumber, linkedin, github, portfolio, userId]);
+    } catch (profileErr) {
+      console.error('[ProfileUpdate] Primary profiles table update failed:', profileErr.message);
+      // If it fails here, it's a critical error, but we log it better
+      throw new ApiError(500, `Database Sync Error: ${profileErr.message}. Please run the latest SQL update.`);
+    }
 
     // 3. Sync with alumni_profiles if user is alumni
     if (req.user.role === 'alumni') {
