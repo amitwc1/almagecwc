@@ -1,10 +1,11 @@
-import { lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { SocketProvider } from './context/SocketContext';
 import ProtectedRoute from './utils/ProtectedRoute';
+import Loader from './components/Loader';
 
 // Lazy-loaded pages for code splitting
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -23,8 +24,6 @@ const EditProfilePage = lazy(() => import('./pages/EditProfilePage'));
 const PublicProfilePage = lazy(() => import('./pages/PublicProfilePage'));
 const ConnectionRequestsPage = lazy(() => import('./pages/ConnectionRequestsPage'));
 const NotificationsPage = lazy(() => import('./pages/NotificationsPage'));
-
-import Loader from './components/Loader';
 
 const MainContent = () => {
   const { loading } = useAuth();
