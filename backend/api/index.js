@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
-const serverless = require('serverless-http');
 const path = require('path');
 require('dotenv').config();
 
@@ -73,32 +72,40 @@ console.log('DB_USER:', process.env.DB_USER ? '✅ Set' : '❌ NOT SET');
 console.log('VERCEL:', process.env.VERCEL ? '✅ Yes' : '❌ No');
 console.log('-------------------------');
 
-// Database Initialization helper
+// --- Vercel Native Handler ---
+// Expert Tip: On Vercel, you don't need serverless-http. 
+// Just exporting the express app is the most stable method.
+
+// Database Initialization helper (Safe for Serverless)
 let isDbInitialized = false;
 const initDbOnce = async () => {
   if (isDbInitialized) return;
   try {
-    console.log('Initializing database connection...');
+    console.log('🚀 Attempting DB initialization...');
     await initializeDatabase();
     isDbInitialized = true;
-    console.log('✅ Database initialized successfully');
+    console.log('✅ DB successfully connected');
   } catch (err) {
-    console.error('❌ Database initialization failed:', err.message);
+    console.error('❌ DB initialization failed:', err.message);
   }
 };
 
-// Serverless Handler (Vercel Expert Pattern)
-const handler = serverless(app);
-
+// Main Vercel Entry Point
 module.exports = async (req, res) => {
-  console.log(`🚀 API HIT: ${req.method} ${req.url}`);
-  if (req.body && Object.keys(req.body).length > 0) {
-    console.log('📦 Request Body:', JSON.stringify(req.body).substring(0, 500));
-  }
-
-  // Ensure DB is connected/initialized before handling request
-  await initDbOnce();
+  console.log(`📡 Request: ${req.method} ${req.url}`);
   
-  // Handle the request
-  return await handler(req, res);
+  try {
+    // 1. Ensure Database is ready
+    await initDbOnce();
+    
+    // 2. Pass request to Express app
+    return app(req, res);
+  } catch (error) {
+    console.error('💥 CRITICAL BOOT ERROR:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server Boot Error',
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
+  }
 };
