@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: '/api/jobs' });
+const API = axios.create({ baseURL: `${import.meta.env.VITE_API_URL || ''}/api/jobs` });
 const getAuthHeader = (token) => ({ headers: { Authorization: `Bearer ${token}` } });
 
 const jobService = {

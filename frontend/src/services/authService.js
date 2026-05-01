@@ -11,7 +11,7 @@ import axios from 'axios';
  * Validation errors include a `details` array of { field, message } objects.
  */
 const API = axios.create({
-  baseURL: '/api/auth',
+  baseURL: `${import.meta.env.VITE_API_URL || ''}/api/auth`,
   headers: { 'Content-Type': 'application/json' },
   timeout: 15000, // 15 second timeout for slow connections
 });

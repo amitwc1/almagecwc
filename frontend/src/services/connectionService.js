@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: '/api/connections' });
+const API = axios.create({ baseURL: `${import.meta.env.VITE_API_URL || ''}/api/connections` });
 const getAuthHeader = (token) => ({ headers: { Authorization: `Bearer ${token}` } });
 
 const connectionService = {

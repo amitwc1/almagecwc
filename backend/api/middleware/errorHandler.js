@@ -61,10 +61,12 @@ const errorHandler = (err, req, res, _next) => {
     message = 'Token expired';
   }
 
-  // Don't expose internal errors in production
+  // Don't expose internal errors in production (Temporarily disabled for debugging)
+  /*
   if (statusCode === 500 && process.env.NODE_ENV === 'production') {
     message = 'Internal Server Error';
   }
+  */
 
   const response = {
     success: false,

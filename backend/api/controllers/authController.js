@@ -32,9 +32,14 @@ exports.register = asyncHandler(async (req, res) => {
     [name, email, hashedPassword, userRole]
   );
 
-  // Create alumni profile if alumni
+  const userId = result.insertId;
+
+  // Create base profile (Required for all users)
+  await pool.query('INSERT INTO profiles (user_id) VALUES (?)', [userId]);
+
+  // Create alumni profile if role is alumni
   if (userRole === 'alumni') {
-    await pool.query('INSERT INTO alumni_profiles (user_id) VALUES (?)', [result.insertId]);
+    await pool.query('INSERT INTO alumni_profiles (user_id) VALUES (?)', [userId]);
   }
 
   // Award "Newcomer" badge

@@ -17,7 +17,7 @@
     },
     {
       "src": "/uploads/(.*)",
-      "dest": "/api/health" 
+      "dest": "api/index.js" 
     }
   ],
   "env": {

@@ -69,21 +69,25 @@ app.use(errorHandler);
 // Database Initialization helper
 let isDbInitialized = false;
 const initDbOnce = async () => {
-  if (!isDbInitialized) {
-    try {
-      await initializeDatabase();
-      isDbInitialized = true;
-      console.log('Database initialized in serverless function');
-    } catch (err) {
-      console.error('Database initialization failed in serverless function:', err);
-    }
+  if (isDbInitialized) return;
+  
+  try {
+    // Only initialize if we are NOT in local dev or if we explicitly want it
+    // In serverless, we want to be fast.
+    await initializeDatabase();
+    isDbInitialized = true;
+    console.log('Database initialized successfully');
+  } catch (err) {
+    console.error('Database initialization failed:', err.message);
+    // We don't throw here to allow the app to at least respond with health checks
   }
 };
 
-// Wrap the handler to ensure DB is initialized
-const handler = serverless(app);
-
+// Vercel Serverless Function Handler
 module.exports = async (req, res) => {
+  // Ensure DB is connected/initialized
   await initDbOnce();
-  return await handler(req, res);
+  
+  // Handle the request using the Express app
+  return app(req, res);
 };

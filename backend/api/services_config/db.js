@@ -35,24 +35,114 @@ const initializeDatabase = async () => {
       )
     `);
 
-    // Profiles table (normalized)
+    // Profiles table (Base profile for all users)
     await db.query(`
       CREATE TABLE IF NOT EXISTS profiles (
         id INT AUTO_INCREMENT PRIMARY KEY,
         user_id INT NOT NULL UNIQUE,
+        phone VARCHAR(20),
+        bio TEXT,
+        location VARCHAR(255),
+        profile_image VARCHAR(255),
         department VARCHAR(100),
         graduation_year INT,
         roll_number VARCHAR(50) UNIQUE,
         job_title VARCHAR(255),
         company VARCHAR(255),
-        location VARCHAR(255),
-        bio TEXT,
-        skills TEXT,
-        linkedin_url VARCHAR(255),
-        github_url VARCHAR(255),
+        linkedin VARCHAR(255),
+        github VARCHAR(255),
+        portfolio VARCHAR(255),
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
       )
+    `);
+
+    // Alumni Profiles table (Specific for alumni)
+    await db.query(`
+      CREATE TABLE IF NOT EXISTS alumni_profiles (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL UNIQUE,
+        department VARCHAR(100),
+        graduation_year INT,
+        location VARCHAR(255),
+        bio TEXT,
+        linkedin VARCHAR(255),
+        profile_image VARCHAR(255),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+      )
+    `);
+
+    // Education table
+    await db.query(`
+      CREATE TABLE IF NOT EXISTS education (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        college VARCHAR(255),
+        degree VARCHAR(100),
+        branch VARCHAR(100),
+        start_year INT,
+        end_year INT,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+      )
+    `);
+
+    // Experience table
+    await db.query(`
+      CREATE TABLE IF NOT EXISTS experience (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        company VARCHAR(255),
+        role VARCHAR(100),
+        location VARCHAR(255),
+        start_date DATE,
+        end_date DATE,
+        currently_working BOOLEAN DEFAULT FALSE,
+        description TEXT,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+      )
+    `);
+
+    // Skills table
+    await db.query(`
+      CREATE TABLE IF NOT EXISTS skills (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        skill_name VARCHAR(100) NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+      )
+    `);
+
+    // Badges table
+    await db.query(`
+      CREATE TABLE IF NOT EXISTS badges (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(100) NOT NULL UNIQUE,
+        description TEXT,
+        icon VARCHAR(100),
+        points INT DEFAULT 0
+      )
+    `);
+
+    // User Badges table
+    await db.query(`
+      CREATE TABLE IF NOT EXISTS user_badges (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        badge_id INT NOT NULL,
+        awarded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE KEY(user_id, badge_id),
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+        FOREIGN KEY (badge_id) REFERENCES badges(id) ON DELETE CASCADE
+      )
+    `);
+
+    // Insert default badges if they don't exist
+    await db.query(`
+      INSERT IGNORE INTO badges (name, description, icon, points) VALUES 
+      ('Newcomer', 'Joined the GEC Alumni network', 'celebration', 10),
+      ('Profile Pro', 'Completed 100% of the profile', 'verified', 50),
+      ('Mentor', 'Shared knowledge with students', 'school', 100)
     `);
 
     // Connections table
@@ -76,7 +166,6 @@ const initializeDatabase = async () => {
         sender_id INT NOT NULL,
         receiver_id INT NOT NULL,
         content TEXT NULL,
-
         message_type ENUM('text', 'image', 'pdf', 'audio') DEFAULT 'text',
         file_url VARCHAR(255),
         file_name VARCHAR(255),
@@ -96,27 +185,12 @@ const initializeDatabase = async () => {
         title VARCHAR(255) NOT NULL,
         message TEXT,
         reference_id INT,
+        link VARCHAR(255),
         is_read BOOLEAN DEFAULT FALSE,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
       )
     `);
-
-    // ─── Migrations: Add columns to pre-existing tables ────────────────
-    
-    // Add columns to profiles if they don't exist
-    try {
-      await db.query(`ALTER TABLE profiles ADD COLUMN IF NOT EXISTS department VARCHAR(100)`);
-      await db.query(`ALTER TABLE profiles ADD COLUMN IF NOT EXISTS graduation_year INT`);
-      await db.query(`ALTER TABLE profiles ADD COLUMN IF NOT EXISTS roll_number VARCHAR(50) UNIQUE`);
-    } catch (e) {}
-
-    // Add columns to messages if they don't exist
-    try {
-      await db.query(`ALTER TABLE messages ADD COLUMN IF NOT EXISTS message_type ENUM('text', 'image', 'pdf', 'audio') DEFAULT 'text'`);
-      await db.query(`ALTER TABLE messages ADD COLUMN IF NOT EXISTS file_url VARCHAR(255)`);
-      await db.query(`ALTER TABLE messages ADD COLUMN IF NOT EXISTS file_name VARCHAR(255)`);
-    } catch (e) {}
 
     db.release();
     console.log('✅ Database tables initialized successfully');

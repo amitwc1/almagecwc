@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: '/api/alumni' });
+const API = axios.create({ baseURL: `${import.meta.env.VITE_API_URL || ''}/api/alumni` });
 
 const alumniService = {
   getAll: async (params = {}) => {

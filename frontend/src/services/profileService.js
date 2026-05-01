@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: '/api/profile',
+  baseURL: `${import.meta.env.VITE_API_URL || ''}/api/profile`,
 });
 
 // Add a request interceptor to attach the JWT token

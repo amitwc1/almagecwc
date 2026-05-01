@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: '/api/events' });
+const API = axios.create({ baseURL: `${import.meta.env.VITE_API_URL || ''}/api/events` });
 const getAuthHeader = (token) => ({ headers: { Authorization: `Bearer ${token}` } });
 
 const eventService = {
