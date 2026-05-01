@@ -26,17 +26,7 @@ const allowedOrigins = [
 ].filter(Boolean);
 
 app.use(cors({ 
-  origin: (origin, callback) => {
-    // Allow requests with no origin (like mobile apps or curl)
-    if (!origin) return callback(null, true);
-    
-    if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
-      callback(null, true);
-    } else {
-      // For production, if not in list, we can still allow but it's safer to list them
-      callback(null, true); 
-    }
-  },
+  origin: true, // This echoes the request origin, allowing any domain
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
