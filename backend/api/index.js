@@ -57,6 +57,11 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Root Route (to prevent 404 on the main domain)
+app.get('/', (req, res) => {
+  res.send('<h1>🚀 GEC Alumni API is Live</h1><p>Visit <a href="/api/health">/api/health</a> to check status.</p>');
+});
+
 // Error Handling
 app.use(notFound);
 app.use(errorHandler);
