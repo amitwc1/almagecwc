@@ -24,10 +24,11 @@ const NotificationsPage = lazy(() => import('./pages/NotificationsPage'));
 const MainApp = () => {
   const { loading } = useAuth();
 
-  if (loading) return <Loader />;
-
+  // We only show the loader during the initial load, 
+  // but we don't return null if it fails.
   return (
     <Suspense fallback={<Loader />}>
+      {loading && <Loader />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
