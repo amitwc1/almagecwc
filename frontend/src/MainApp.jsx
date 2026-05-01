@@ -1,8 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { useAuth } from './context/AuthContext';
 import ProtectedRoute from './utils/ProtectedRoute';
-import Loader from './components/Loader';
 
 // Lazy-loaded pages
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -22,13 +20,8 @@ const ConnectionRequestsPage = lazy(() => import('./pages/ConnectionRequestsPage
 const NotificationsPage = lazy(() => import('./pages/NotificationsPage'));
 
 const MainApp = () => {
-  const { loading } = useAuth();
-
-  // We only show the loader during the initial load, 
-  // but we don't return null if it fails.
   return (
-    <Suspense fallback={<Loader />}>
-      {loading && <Loader />}
+    <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
