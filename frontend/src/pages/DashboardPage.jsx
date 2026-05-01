@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import Sidebar from '../components/Sidebar';
 import { useAuth } from '../context/AuthContext';
 import NotificationBell from '../components/NotificationBell';
-import SkeletonCard from '../components/SkeletonCard';
-import axios from 'axios';
+import { API_URL } from '../services/apiConfig';
 
 const DashboardPage = () => {
   const { user, token } = useAuth();
@@ -17,12 +17,18 @@ const DashboardPage = () => {
       const headers = { Authorization: `Bearer ${token}` };
 
       Promise.all([
-        axios.get('/api/mentorship', { headers }).catch(() => ({ data: { data: [] } })),
-        axios.get('/api/events', { headers }).catch(() => ({ data: { data: [] } })),
+        axios.get(`${API_URL}/mentorship/my-requests`, { headers }).catch(() => ({ data: { data: [] } })),
+        axios.get(`${API_URL}/events`, { headers }).catch(() => ({ data: { data: [] } })),
       ]).then(([mentRes, eventRes]) => {
         // Backend returns { success, data: [...] }
-        setMentorships(mentRes.data?.data || mentRes.data || []);
-        setEvents((eventRes.data?.data || eventRes.data || []).slice(0, 3));
+        const mData = mentRes.data?.data || (Array.isArray(mentRes.data) ? mentRes.data : []);
+        const eData = eventRes.data?.data || (Array.isArray(eventRes.data) ? eventRes.data : []);
+        
+        setMentorships(mData);
+        setEvents(eData.slice(0, 3));
+        setLoading(false);
+      }).catch(err => {
+        console.error('[Dashboard] Data load failed:', err);
         setLoading(false);
       });
     }
@@ -30,7 +36,7 @@ const DashboardPage = () => {
 
   const handleMentorshipAction = async (id, status) => {
     try {
-      await axios.put(`/api/mentorship/${id}`, { status }, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.put(`${API_URL}/mentorship/respond`, { request_id: id, status }, { headers: { Authorization: `Bearer ${token}` } });
       setMentorships(prev => prev.map(m => m.id === id ? { ...m, status } : m));
     } catch (err) { console.error('[Dashboard] Mentorship action failed:', err); }
   };
