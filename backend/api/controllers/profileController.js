@@ -180,9 +180,9 @@ exports.updateProfile = asyncHandler(async (req, res) => {
       `, [department, graduation_year || null, location, bio, linkedin, userId]);
     }
 
-    // 4. Update profile image if uploaded
+    // 4. Update profile image if uploaded (Cloudinary)
     if (req.file) {
-      const imageUrl = `/uploads/profiles/${req.file.filename}`;
+      const imageUrl = req.file.path;
       await connection.query('UPDATE profiles SET profile_image = ? WHERE user_id = ?', [imageUrl, userId]);
       await connection.query('UPDATE users SET avatar_url = ? WHERE id = ?', [imageUrl, userId]);
       

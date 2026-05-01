@@ -18,23 +18,11 @@ const {
   deleteSkill
 } = require('../controllers/profileController');
 
-// ─── Multer Setup ───────────────────────────────────────────────────
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const dir = 'uploads/profiles';
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
-    cb(null, dir);
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, 'profile-' + uniqueSuffix + path.extname(file.originalname));
-  }
-});
+const { profileStorage } = require('../services_config/cloudinary');
 
+// ─── Multer Setup (Cloudinary) ──────────────────────────────────────
 const upload = multer({
-  storage,
+  storage: profileStorage,
   limits: { fileSize: 2 * 1024 * 1024 }, // 2MB
   fileFilter: (req, file, cb) => {
     if (file.mimetype.startsWith('image/')) {
