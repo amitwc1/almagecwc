@@ -26,11 +26,13 @@ const DashboardPage = () => {
         
         setMentorships(mData);
         setEvents(eData.slice(0, 3));
-        setLoading(false);
       }).catch(err => {
         console.error('[Dashboard] Data load failed:', err);
+      }).finally(() => {
         setLoading(false);
       });
+    } else {
+      setLoading(false);
     }
   }, [token]);
 

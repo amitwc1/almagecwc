@@ -84,9 +84,9 @@ exports.getAllAlumni = asyncHandler(async (req, res) => {
 
   // Main Data Query
   const dataQuery = `
-    SELECT u.id, u.name, u.email, u.is_online, ap.graduation_year, ap.department, ap.company,
-           ap.job_title, ap.location, ap.skills, ap.bio, ap.linkedin, p.roll_number,
-           COALESCE(ap.profile_image, u.avatar_url, p.profile_image) as profile_image
+    SELECT u.id, u.name, u.email, u.is_online, u.avatar_url,
+           ap.*, p.roll_number,
+           COALESCE(u.avatar_url, p.profile_image) as fallback_image
     FROM users u
     JOIN alumni_profiles ap ON u.id = ap.user_id
     LEFT JOIN profiles p ON u.id = p.user_id
@@ -95,15 +95,14 @@ exports.getAllAlumni = asyncHandler(async (req, res) => {
     LIMIT ? OFFSET ?
   `;
   
-  // Debug Logging (Required by user)
-  console.log("SQL Query:", dataQuery);
-  console.log("SQL Params:", [...params, pLimit, offset]);
-
   const [alumni] = await pool.query(dataQuery, [...params, pLimit, offset]);
 
   res.json({
     success: true,
-    data: alumni,
+    data: alumni.map(a => ({
+      ...a,
+      profile_image: a.profile_image || a.fallback_image || a.avatar_url
+    })),
     pagination: {
       total,
       page: pPage,
@@ -120,10 +119,8 @@ exports.getAllAlumni = asyncHandler(async (req, res) => {
  */
 exports.getAlumniById = asyncHandler(async (req, res) => {
   const [alumni] = await pool.query(`
-    SELECT u.id, u.name, u.email, u.created_at, u.is_online, u.last_seen,
-           ap.graduation_year, ap.department, ap.company, ap.job_title,
-           ap.location, ap.skills, ap.bio, ap.linkedin, 
-           COALESCE(ap.profile_image, u.avatar_url, p.profile_image) as profile_image
+    SELECT u.id, u.name, u.email, u.created_at, u.is_online, u.last_seen, u.avatar_url,
+           ap.*, p.roll_number
     FROM users u
     JOIN alumni_profiles ap ON u.id = ap.user_id
     LEFT JOIN profiles p ON u.id = p.user_id
@@ -134,13 +131,16 @@ exports.getAlumniById = asyncHandler(async (req, res) => {
     throw new ApiError(404, 'Alumni profile not found');
   }
 
+  const profile = alumni[0];
+  const profile_image = profile.profile_image || profile.avatar_url;
+
   // Get badges
   const [badges] = await pool.query(`
     SELECT b.name, b.icon, b.points FROM user_badges ub
     JOIN badges b ON ub.badge_id = b.id WHERE ub.user_id = ?
   `, [req.params.id]);
 
-  res.json({ success: true, ...alumni[0], badges });
+  res.json({ success: true, ...profile, profile_image, badges });
 });
 
 /**

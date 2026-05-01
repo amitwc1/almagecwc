@@ -10,35 +10,43 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [loading, setLoading] = useState(true);
 
+  const [isInitialized, setIsInitialized] = useState(false);
+
   // Load user on mount or when token changes
   useEffect(() => {
     const loadUser = async () => {
-      if (token) {
-        try {
-          const userData = await authService.getMe(token);
-          // Backend returns { success, id, name, email, role, badges, ... }
-          // We need to set user as an object with at least { id, name, email, role }
-          setUser({
-            id: userData.id,
-            name: userData.name,
-            email: userData.email,
-            role: userData.role,
-            status: userData.status,
-            badges: userData.badges || [],
-            unreadNotifications: userData.unreadNotifications || 0,
-          });
-          console.log('[AuthContext] User loaded:', userData.name, userData.role);
-        } catch (err) {
-          console.warn('[AuthContext] Failed to load user, clearing token:', extractErrorMessage(err));
-          localStorage.removeItem('token');
-          setToken(null);
-          setUser(null);
-        }
+      if (!token) {
+        setLoading(false);
+        setIsInitialized(true);
+        return;
       }
-      setLoading(false);
+
+      try {
+        const userData = await authService.getMe(token);
+        setUser({
+          id: userData.id,
+          name: userData.name,
+          email: userData.email,
+          role: userData.role,
+          status: userData.status,
+          badges: userData.badges || [],
+          unreadNotifications: userData.unreadNotifications || 0,
+        });
+      } catch (err) {
+        console.warn('[AuthContext] Failed to load user, clearing token');
+        localStorage.removeItem('token');
+        setToken(null);
+        setUser(null);
+      } finally {
+        setLoading(false);
+        setIsInitialized(true);
+      }
     };
-    loadUser();
-  }, [token]);
+
+    if (!isInitialized || token) {
+      loadUser();
+    }
+  }, [token, isInitialized]);
 
   /**
    * Login — calls backend, stores token, sets user state.
