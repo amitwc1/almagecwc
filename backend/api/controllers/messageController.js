@@ -2,27 +2,9 @@ const { pool } = require('../services_config/db');
 
 const { ApiError, asyncHandler } = require('../middleware/errorHandler');
 const { createNotification } = require('./notificationController');
-const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
+const { messageStorage } = require('../services_config/cloudinary');
 
-// Ensure uploads/messages directory exists
-const uploadDir = 'uploads/messages';
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
-}
-
-// Multer Config
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, uploadDir);
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
-  }
-});
-
+// Multer Config using Cloudinary
 const fileFilter = (req, file, cb) => {
   const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf', 'audio/mpeg', 'audio/wav', 'audio/webm', 'audio/ogg'];
   if (allowedTypes.includes(file.mimetype)) {
@@ -33,7 +15,7 @@ const fileFilter = (req, file, cb) => {
 };
 
 exports.upload = multer({
-  storage: storage,
+  storage: messageStorage,
   fileFilter: fileFilter,
   limits: { fileSize: 10 * 1024 * 1024 } // 10MB limit
 });
@@ -170,7 +152,7 @@ exports.sendMessage = asyncHandler(async (req, res) => {
     else if (file.mimetype === 'application/pdf') message_type = 'pdf';
     else if (file.mimetype.startsWith('audio/')) message_type = 'audio';
     
-    file_url = `uploads/messages/${file.filename}`;
+    file_url = file.path;
     file_name = file.originalname;
   } else if (!content || !content.trim()) {
     throw new ApiError(400, 'Message content or file is required');

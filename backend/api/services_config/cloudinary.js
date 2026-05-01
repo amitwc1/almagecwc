@@ -26,8 +26,28 @@ const eventStorage = new CloudinaryStorage({
   },
 });
 
+const messageStorage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'gec_alumni/messages',
+    allowed_formats: ['jpg', 'png', 'jpeg', 'pdf', 'mp3', 'wav', 'ogg'],
+    resource_type: 'auto',
+  },
+});
+
+const resumeStorage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'gec_alumni/resumes',
+    allowed_formats: ['pdf', 'doc', 'docx'],
+    resource_type: 'auto',
+  },
+});
+
 module.exports = {
   cloudinary,
   profileStorage,
-  eventStorage
+  eventStorage,
+  messageStorage,
+  resumeStorage
 };
