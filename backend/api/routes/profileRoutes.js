@@ -43,11 +43,14 @@ router.get('/:userId', auth, getPublicProfile);
 router.put('/update', auth, (req, res, next) => {
   upload.single('profile_image')(req, res, (err) => {
     if (err) {
-      console.error('[ProfileUpdate] Multer/Cloudinary upload error:', err.message);
+      console.error('[ProfileUpdate] Multer/Cloudinary upload error:', err);
       if (err.code === 'LIMIT_FILE_SIZE') {
         return res.status(400).json({ success: false, error: 'Image size must be under 2MB' });
       }
-      return res.status(400).json({ success: false, error: `Upload failed: ${err.message}` });
+      
+      // Fallback for weird error objects
+      const errorMessage = err.message || (typeof err === 'string' ? err : JSON.stringify(err)) || 'Unknown upload error';
+      return res.status(400).json({ success: false, error: `Upload failed: ${errorMessage}` });
     }
     next();
   });
