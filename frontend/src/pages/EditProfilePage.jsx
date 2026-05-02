@@ -4,7 +4,10 @@ import profileService from '../services/profileService';
 import { extractErrorMessage } from '../services/authService';
 import { toast } from 'react-hot-toast';
 
+import { useAuth } from '../context/AuthContext';
+
 const EditProfilePage = () => {
+  const { refreshUser } = useAuth();
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -50,7 +53,10 @@ const EditProfilePage = () => {
         portfolio: p.portfolio || ''
       });
       if (p.profile_image) {
-        setImagePreview(`${import.meta.env.VITE_API_URL || ''}${p.profile_image}`);
+        const imgUrl = p.profile_image.startsWith('http') 
+          ? p.profile_image 
+          : `${import.meta.env.VITE_API_URL || ''}${p.profile_image}`;
+        setImagePreview(imgUrl);
       }
     } catch (err) {
       toast.error(extractErrorMessage(err));
@@ -100,6 +106,7 @@ const EditProfilePage = () => {
 
       await profileService.updateProfile(formData);
       toast.success("Profile updated successfully");
+      await refreshUser();
       fetchProfile();
     } catch (err) {
       toast.error(extractErrorMessage(err));

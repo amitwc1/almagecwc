@@ -136,12 +136,17 @@ exports.updateProfile = asyncHandler(async (req, res) => {
     linkedin: Joi.string().allow('', null).max(255),
     github: Joi.string().allow('', null).max(255),
     portfolio: Joi.string().allow('', null).max(255)
-  });
+  }).unknown(true); // Allow extra fields from FormData
 
   const { error } = schema.validate(req.body);
   if (error) {
     console.error('[ProfileUpdate] Validation Error:', error.details[0].message);
     throw new ApiError(400, error.details[0].message);
+  }
+
+  // Debug: Log uploaded file info
+  if (req.file) {
+    console.log('[ProfileUpdate] File uploaded:', { path: req.file.path, mimetype: req.file.mimetype, size: req.file.size });
   }
 
   const connection = await pool.getConnection();

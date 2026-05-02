@@ -82,8 +82,22 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
+  /**
+   * Refresh User — refetches current user data from server.
+   */
+  const refreshUser = async () => {
+    if (!token) return;
+    try {
+      const userData = await authService.getMe(token);
+      setUser(userData);
+      return userData;
+    } catch (err) {
+      console.error('[AuthContext] Refresh failed:', err);
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, token, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, token, loading, login, register, logout, setUser, refreshUser }}>
       {children}
     </AuthContext.Provider>
   );

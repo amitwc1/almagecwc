@@ -347,7 +347,11 @@ const MessagesPage = () => {
                 >
                   <div className="relative shrink-0">
                     {u.avatar_url ? (
-                      <img src={u.avatar_url} alt={u.name} className="w-12 h-12 rounded-full object-cover" />
+                      <img 
+                        src={u.avatar_url.startsWith('http') ? u.avatar_url : `${import.meta.env.VITE_API_URL || ''}${u.avatar_url}`} 
+                        alt={u.name} 
+                        className="w-12 h-12 rounded-full object-cover" 
+                      />
                     ) : (
                       <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg">
                         {u.name?.charAt(0)}
@@ -399,7 +403,11 @@ const MessagesPage = () => {
                 >
                   <div className="relative">
                     {activeChat.avatar_url ? (
-                      <img src={activeChat.avatar_url} alt={activeChat.name} className="w-10 h-10 rounded-full object-cover ring-2 ring-transparent group-hover:ring-primary/30 transition-all" />
+                      <img 
+                        src={activeChat.avatar_url.startsWith('http') ? activeChat.avatar_url : `${import.meta.env.VITE_API_URL || ''}${activeChat.avatar_url}`} 
+                        alt={activeChat.name} 
+                        className="w-10 h-10 rounded-full object-cover ring-2 ring-transparent group-hover:ring-primary/30 transition-all" 
+                      />
                     ) : (
                       <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold group-hover:bg-primary/20 transition-all">
                         {activeChat.name?.charAt(0)}
@@ -435,9 +443,13 @@ const MessagesPage = () => {
                         {!isMe && (
                           <div className="w-8 h-8 rounded-full shrink-0 overflow-hidden">
                             {showAvatar ? (
-                               activeChat.avatar_url ? (
-                                 <img src={activeChat.avatar_url} alt="" className="w-full h-full object-cover" />
-                               ) : (
+                             {activeChat.avatar_url ? (
+                               <img 
+                                 src={activeChat.avatar_url.startsWith('http') ? activeChat.avatar_url : `${import.meta.env.VITE_API_URL || ''}${activeChat.avatar_url}`} 
+                                 alt="" 
+                                 className="w-full h-full object-cover" 
+                               />
+                             ) : (
                                  <div className="w-full h-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-[10px] font-bold text-slate-500">
                                    {activeChat.name?.charAt(0)}
                                  </div>
@@ -454,10 +466,10 @@ const MessagesPage = () => {
                             {m.message_type === 'image' && (
                               <div className="mb-2">
                                 <img 
-                                  src={`/${m.file_url}`} 
+                                  src={m.file_url.startsWith('http') ? m.file_url : `${import.meta.env.VITE_API_URL || ''}/${m.file_url}`} 
                                   alt={m.file_name} 
                                   className="rounded-lg max-w-full max-h-60 object-cover cursor-pointer hover:opacity-90 transition-opacity"
-                                  onClick={() => window.open(`/${m.file_url}`, '_blank')}
+                                  onClick={() => window.open(m.file_url.startsWith('http') ? m.file_url : `${import.meta.env.VITE_API_URL || ''}/${m.file_url}`, '_blank')}
                                 />
                               </div>
                             )}
@@ -466,13 +478,24 @@ const MessagesPage = () => {
                                 <span className="material-symbols-outlined text-3xl">picture_as_pdf</span>
                                 <div className="flex-1 min-w-0">
                                   <p className="text-xs font-bold truncate">{m.file_name}</p>
-                                  <a href={`/${m.file_url}`} target="_blank" rel="noreferrer" className={`text-[10px] font-black underline ${isMe ? 'text-white' : 'text-primary'}`}>View PDF</a>
+                                  <a 
+                                    href={m.file_url.startsWith('http') ? m.file_url : `${import.meta.env.VITE_API_URL || ''}/${m.file_url}`} 
+                                    target="_blank" 
+                                    rel="noreferrer" 
+                                    className={`text-[10px] font-black underline ${isMe ? 'text-white' : 'text-primary'}`}
+                                  >
+                                    View PDF
+                                  </a>
                                 </div>
                               </div>
                             )}
                             {m.message_type === 'audio' && (
                               <div className="mb-2 min-w-[200px]">
-                                <audio controls className="w-full h-8" src={`/${m.file_url}`}></audio>
+                                <audio 
+                                  controls 
+                                  className="w-full h-8" 
+                                  src={m.file_url.startsWith('http') ? m.file_url : `${import.meta.env.VITE_API_URL || ''}/${m.file_url}`}
+                                ></audio>
                               </div>
                             )}
                             {m.content && <p className="leading-relaxed whitespace-pre-wrap">{m.content}</p>}

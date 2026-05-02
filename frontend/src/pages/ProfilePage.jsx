@@ -50,10 +50,14 @@ const ProfilePage = () => {
             <div className="relative flex justify-between items-end -mt-12">
               <div className="relative">
                 <img
-                  src={profile.profile_image ? `${import.meta.env.VITE_API_URL || ''}${profile.profile_image}` : '/default-avatar.png'}
+                  src={profile.profile_image 
+                    ? (profile.profile_image.startsWith('http') 
+                        ? profile.profile_image 
+                        : `${import.meta.env.VITE_API_URL || ''}${profile.profile_image}`)
+                    : '/default-avatar.png'}
                   alt={profile.name}
                   className="w-32 h-32 rounded-2xl border-4 border-white dark:border-slate-800 bg-slate-100 dark:bg-slate-700 object-cover shadow-lg"
-                  onError={(e) => { e.target.src = 'https://ui-avatars.com/api/?name=' + profile.name; }}
+                  onError={(e) => { e.target.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(profile.name) + '&background=random&color=fff&size=128'; }}
                 />
               </div>
               <Link

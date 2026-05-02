@@ -51,7 +51,11 @@ const AlumniProfilePage = () => {
             <div className="px-6 pb-6 -mt-12 flex flex-col md:flex-row md:justify-between md:items-end gap-4">
               <div className="flex flex-col md:flex-row items-start md:items-end gap-4">
                 <div className="w-32 h-32 rounded-2xl border-4 border-white dark:border-slate-800 shadow-md bg-cover bg-center bg-slate-100 dark:bg-slate-700"
-                  style={{backgroundImage: profile.profile_image ? `url("${profile.profile_image}")` : 'none'}}>
+                  style={{
+                    backgroundImage: profile.profile_image 
+                      ? `url("${profile.profile_image.startsWith('http') ? profile.profile_image : `${import.meta.env.VITE_API_URL || ''}${profile.profile_image}`}")` 
+                      : 'none'
+                  }}>
                   {!profile.profile_image && (
                     <div className="w-full h-full rounded-2xl bg-primary/20 flex items-center justify-center text-primary font-bold text-4xl">
                       {profile.name?.charAt(0)}

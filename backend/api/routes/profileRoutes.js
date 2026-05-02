@@ -38,7 +38,20 @@ const upload = multer({
 // Basic Info
 router.get('/me', auth, getMe);
 router.get('/:userId', auth, getPublicProfile);
-router.put('/update', auth, upload.single('profile_image'), updateProfile);
+
+// Profile update with multer error handling
+router.put('/update', auth, (req, res, next) => {
+  upload.single('profile_image')(req, res, (err) => {
+    if (err) {
+      console.error('[ProfileUpdate] Multer/Cloudinary upload error:', err.message);
+      if (err.code === 'LIMIT_FILE_SIZE') {
+        return res.status(400).json({ success: false, error: 'Image size must be under 2MB' });
+      }
+      return res.status(400).json({ success: false, error: `Upload failed: ${err.message}` });
+    }
+    next();
+  });
+}, updateProfile);
 
 // Education
 router.post('/education', auth, addEducation);
