@@ -51,14 +51,17 @@ exports.requestMentorship = asyncHandler(async (req, res) => {
   // Real-time notification
   const io = req.app.get('io');
   const onlineUsers = req.app.get('onlineUsers');
-  const mentorSocket = onlineUsers.get(parseInt(mentor_id));
-  if (mentorSocket) {
-    io.to(mentorSocket).emit('new_notification', {
-      type: 'mentorship',
-      title: 'Mentorship Request',
-      message: `${student[0].name} wants to connect for mentorship`,
-      userId: mentor_id
-    });
+  
+  if (io && onlineUsers) {
+    const mentorSocket = onlineUsers.get(parseInt(mentor_id));
+    if (mentorSocket) {
+      io.to(mentorSocket).emit('new_notification', {
+        type: 'mentorship',
+        title: 'Mentorship Request',
+        message: `${student[0].name} wants to connect for mentorship`,
+        userId: mentor_id
+      });
+    }
   }
 
   res.status(201).json({ success: true, id: result.insertId, message: 'Mentorship request sent' });
@@ -112,14 +115,17 @@ exports.updateMentorshipStatus = asyncHandler(async (req, res) => {
   // Real-time notification
   const io = req.app.get('io');
   const onlineUsers = req.app.get('onlineUsers');
-  const studentSocket = onlineUsers.get(request[0].student_id);
-  if (studentSocket) {
-    io.to(studentSocket).emit('new_notification', {
-      type: 'mentorship',
-      title: `Mentorship ${status}`,
-      message: `${mentorUser[0].name} ${status} your mentorship request`,
-      userId: request[0].student_id
-    });
+  
+  if (io && onlineUsers) {
+    const studentSocket = onlineUsers.get(request[0].student_id);
+    if (studentSocket) {
+      io.to(studentSocket).emit('new_notification', {
+        type: 'mentorship',
+        title: `Mentorship ${status}`,
+        message: `${mentorUser[0].name} ${status} your mentorship request`,
+        userId: request[0].student_id
+      });
+    }
   }
 
   // Check Top Mentor badge

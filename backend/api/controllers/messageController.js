@@ -192,9 +192,11 @@ exports.sendMessage = asyncHandler(async (req, res) => {
   // Real-time message delivery
   const io = req.app.get('io');
   const onlineUsers = req.app.get('onlineUsers');
-  const receiverSocket = onlineUsers.get(parseInt(receiver_id));
-  if (receiverSocket) {
-    io.to(receiverSocket).emit('new_message', messageData);
+  if (io && onlineUsers) {
+    const receiverSocket = onlineUsers.get(parseInt(receiver_id));
+    if (receiverSocket) {
+      io.to(receiverSocket).emit('new_message', messageData);
+    }
   }
 
   res.status(201).json({

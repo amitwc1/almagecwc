@@ -9,6 +9,10 @@ const { logger, requestLogger } = require('./services_config/logger');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 
 const app = express();
+const onlineUsers = new Map();
+app.set('onlineUsers', onlineUsers);
+app.set('io', null);
+
 
 // 1. HARDCODED CORS (TOP PRIORITY)
 app.use((req, res, next) => {

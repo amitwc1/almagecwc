@@ -103,9 +103,11 @@ exports.respondToConnection = asyncHandler(async (req, res) => {
   if (status === 'accepted') {
     const io = req.app.get('io');
     const onlineUsers = req.app.get('onlineUsers');
-    const senderSocket = onlineUsers.get(conn.sender_id);
-    if (senderSocket) {
-      io.to(senderSocket).emit('connection_accepted', { userId: req.user.id, name: responder[0].name });
+    if (io && onlineUsers) {
+      const senderSocket = onlineUsers.get(conn.sender_id);
+      if (senderSocket) {
+        io.to(senderSocket).emit('connection_accepted', { userId: req.user.id, name: responder[0].name });
+      }
     }
   }
 
